@@ -144,6 +144,9 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 			}
 			return nil;
 		}
+		if ([decodedKey hasSuffix:@"[]"]) {
+			decodedKey = [decodedKey substringToIndex:[decodedKey length] - 2];
+		}
 
 		[components addValue:decodedValue forKey:decodedKey];
 	}
