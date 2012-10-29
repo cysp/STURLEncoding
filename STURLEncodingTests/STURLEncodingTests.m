@@ -75,8 +75,8 @@
 		STAssertNotNil(components, @"error decoding query string: %@", error);
 		STAssertTrue([components containsKey:@"foo"], @"");
 		STAssertFalse([components containsKey:@"bar"], @"");
-		STAssertNil([components valueForKey:@"foo"], @"");
-		STAssertNil(components[@"foo"], @"");
+		STAssertEqualObjects([components valueForKey:@"foo"], @"", @"");
+		STAssertEqualObjects(components[@"foo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
@@ -108,7 +108,7 @@
 		STAssertEqualObjects([components valueForKey:@"foo"], @"baz", @"");
 		STAssertEqualObjects([components valuesForKey:@"foo"], @[ @"baz" ], @"");
 		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertNil(components[@"bar"], @"");
+		STAssertEqualObjects(components[@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
@@ -119,7 +119,7 @@
 		STAssertEqualObjects([components valueForKey:@"foo"], @"baz", @"");
 		STAssertEqualObjects([components valuesForKey:@"foo"], @[ @"baz" ], @"");
 		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertNil(components[@"bar"], @"");
+		STAssertEqualObjects(components[@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
@@ -130,7 +130,7 @@
 		STAssertEqualObjects([components valueForKey:@"foo"], @"baz", @"");
 		STAssertEqualObjects([components valuesForKey:@"foo"], @[ @"baz" ], @"");
 		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertNil(components[@"bar"], @"");
+		STAssertEqualObjects(components[@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
@@ -180,6 +180,15 @@
 		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
 		STAssertNil([components valueForKey:@"f&oo"], @"");
 		STAssertNil(components[@"f&oo"], @"");
+	}
+	{
+		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLEncoding componentsFromQueryString:@"foo;foo=qu%20uux&foo=" error:&error];
+		STAssertNotNil(components, @"error decoding query string: %@", error);
+		STAssertTrue([components containsKey:@"foo"], @"");
+		NSArray *expected = @[ @"qu uux", @"" ];
+		STAssertEqualObjects(components[@"foo"], expected, @"");
+		STAssertEqualObjects([components valuesForKey:@"foo"], expected, @"");
 	}
 }
 

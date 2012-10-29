@@ -116,7 +116,9 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 			return nil;
 		}
 		if ([scanner scanCharactersFromSet:equalsCharacterSet intoString:NULL]) {
-			[scanner scanUpToCharactersFromSet:separatorsCharacterSet intoString:&value];
+			if (![scanner scanUpToCharactersFromSet:separatorsCharacterSet intoString:&value]) {
+				value = @"";
+			}
 		}
 		if (![scanner isAtEnd]) {
 			if (![scanner scanCharactersFromSet:separatorsCharacterSet intoString:NULL]) {
