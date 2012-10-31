@@ -183,6 +183,22 @@
 	}
 	{
 		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLEncoding componentsFromQueryString:@"f+oo;bar=qu%20uux" error:&error];
+		STAssertNotNil(components, @"error decoding query string: %@", error);
+		STAssertTrue([components containsKey:@"f oo"], @"");
+		STAssertTrue([components containsKey:@"bar"], @"");
+		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
+	}
+	{
+		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLEncoding componentsFromQueryString:@"f+oo;bar=qu%20u+ux" error:&error];
+		STAssertNotNil(components, @"error decoding query string: %@", error);
+		STAssertTrue([components containsKey:@"f oo"], @"");
+		STAssertTrue([components containsKey:@"bar"], @"");
+		STAssertEqualObjects(components[@"bar"], @"qu u ux", @"");
+	}
+	{
+		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLEncoding componentsFromQueryString:@"foo;foo=qu%20uux&foo=" error:&error];
 		STAssertNotNil(components, @"error decoding query string: %@", error);
 		STAssertTrue([components containsKey:@"foo"], @"");

@@ -87,6 +87,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 #pragma mark - URLDecoding
 
 + (NSString *)stringByURLDecodingString:(NSString *)string {
+	string = [string stringByReplacingOccurrencesOfString:@"+" withString:@" "];
 	NSString *decoded = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (__bridge CFStringRef)string, CFSTR(""), kCFStringEncodingUTF8);
 	return decoded;
 }
