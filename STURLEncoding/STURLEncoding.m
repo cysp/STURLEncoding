@@ -47,11 +47,11 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 	return [_components objectForKey:key] != nil;
 }
 
-- (NSArray *)valuesForKey:(NSString *)key {
+- (NSArray *)stringsForKey:(NSString *)key {
 	return [_components objectForKey:key];
 }
 
-- (NSString *)valueForKey:(NSString *)key {
+- (NSString *)stringForKey:(NSString *)key {
 	NSArray *values = [_components objectForKey:key];
 	return [values count] ? [values objectAtIndex:0] : nil;
 }

@@ -20,8 +20,8 @@ typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 
 @interface STURLQueryStringComponents : NSObject
 - (BOOL)containsKey:(NSString *)key;
-- (NSString *)valueForKey:(NSString *)key;
-- (NSArray *)valuesForKey:(NSString *)key;
+- (NSString *)stringForKey:(NSString *)key;
+- (NSArray *)stringsForKey:(NSString *)key;
 - (id)objectForKeyedSubscript:(NSString *)key;
 @end
 
