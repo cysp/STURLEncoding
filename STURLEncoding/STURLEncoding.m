@@ -16,7 +16,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 
 
 @interface STURLQueryStringComponents ()
-- (void)addValue:(NSString *)value forKey:(NSString *)key;
+- (void)addString:(NSString *)value forKey:(NSString *)key;
 @end
 
 @implementation STURLQueryStringComponents {
@@ -31,15 +31,15 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 }
 
 
-- (void)addValue:(NSString *)value forKey:(NSString *)key {
-	NSMutableArray *valuesForKey = [_components objectForKey:key];
-	if (!valuesForKey) {
-		valuesForKey = [NSMutableArray array];
-		[_components setObject:valuesForKey forKey:key];
+- (void)addString:(NSString *)value forKey:(NSString *)key {
+	NSMutableArray *stringsForKey = [_components objectForKey:key];
+	if (!stringsForKey) {
+		stringsForKey = [NSMutableArray array];
+		[_components setObject:stringsForKey forKey:key];
 	}
 
 	if (value) {
-		[valuesForKey addObject:value];
+		[stringsForKey addObject:value];
 	}
 }
 
@@ -52,16 +52,16 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 }
 
 - (NSString *)stringForKey:(NSString *)key {
-	NSArray *values = [_components objectForKey:key];
-	return [values count] ? [values objectAtIndex:0] : nil;
+	NSArray *strings = [_components objectForKey:key];
+	return [strings count] ? [strings objectAtIndex:0] : nil;
 }
 
 - (id)objectForKeyedSubscript:(NSString *)key {
-	NSArray *values = [_components objectForKey:key];
-	if ([values count] == 1) {
-		return [values lastObject];
+	NSArray *strings = [_components objectForKey:key];
+	if ([strings count] == 1) {
+		return [strings lastObject];
 	}
-	return [values count] ? values : nil;
+	return [strings count] ? strings : nil;
 }
 
 @end
@@ -149,7 +149,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 			decodedKey = [decodedKey substringToIndex:[decodedKey length] - 2];
 		}
 
-		[components addValue:decodedValue forKey:decodedKey];
+		[components addString:decodedValue forKey:decodedKey];
 	}
 
 	return components;
