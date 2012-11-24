@@ -18,11 +18,18 @@ typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 };
 
 
-@interface STURLQueryStringComponents : NSObject
+@interface STURLQueryStringComponents : NSObject<NSCopying,NSMutableCopying>
++ (instancetype)components;
 - (BOOL)containsKey:(NSString *)key;
 - (NSString *)stringForKey:(NSString *)key;
 - (NSArray *)stringsForKey:(NSString *)key;
 - (id)objectForKeyedSubscript:(NSString *)key;
+@end
+
+@interface STMutableURLQueryStringComponents : STURLQueryStringComponents
+- (void)setString:(NSString *)string forKey:(NSString *)key;
+- (void)addString:(NSString *)string forKey:(NSString *)key;
+- (void)setStrings:(NSArray *)strings forKey:(NSString *)key;
 @end
 
 

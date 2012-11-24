@@ -15,12 +15,13 @@
 NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 
 
-@interface STURLQueryStringComponents ()
-- (void)addString:(NSString *)value forKey:(NSString *)key;
-@end
-
 @implementation STURLQueryStringComponents {
+@package
 	NSMutableDictionary *_components;
+}
+
++ (instancetype)components {
+	return [[self alloc] init];
 }
 
 - (id)init {
@@ -30,18 +31,24 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 	return self;
 }
 
-
-- (void)addString:(NSString *)value forKey:(NSString *)key {
-	NSMutableArray *stringsForKey = [_components objectForKey:key];
-	if (!stringsForKey) {
-		stringsForKey = [NSMutableArray array];
-		[_components setObject:stringsForKey forKey:key];
-	}
-
-	if (value) {
-		[stringsForKey addObject:value];
-	}
+- (id)copyWithZone:(NSZone *)zone {
+	STURLQueryStringComponents *other = [[STURLQueryStringComponents allocWithZone:zone] init];
+	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		NSMutableArray *otherStrings = [[NSMutableArray allocWithZone:zone] initWithArray:obj copyItems:YES];
+		[other->_components setObject:otherStrings forKey:key];
+	}];
+	return other;
 }
+
+- (id)mutableCopyWithZone:(NSZone *)zone {
+	STMutableURLQueryStringComponents *other = [[STMutableURLQueryStringComponents allocWithZone:zone] init];
+	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		NSMutableArray *otherStrings = [[NSMutableArray allocWithZone:zone] initWithArray:obj copyItems:YES];
+		[other->_components setObject:otherStrings forKey:key];
+	}];
+	return other;
+}
+
 
 - (BOOL)containsKey:(NSString *)key {
 	return [_components objectForKey:key] != nil;
@@ -62,6 +69,36 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 		return [strings lastObject];
 	}
 	return [strings count] ? strings : nil;
+}
+
+@end
+
+
+@implementation STMutableURLQueryStringComponents
+
+- (void)addString:(NSString *)string forKey:(NSString *)key {
+	NSMutableArray *stringsForKey = [_components objectForKey:key];
+	if (!stringsForKey) {
+		stringsForKey = [NSMutableArray array];
+		[_components setObject:stringsForKey forKey:key];
+	}
+
+	if (string) {
+		[stringsForKey addObject:string];
+	}
+}
+
+- (void)setString:(NSString *)string forKey:(NSString *)key {
+	[self setStrings:@[ string ] forKey:key];
+}
+
+- (void)setStrings:(NSArray *)strings forKey:(NSString *)key {
+	if (strings) {
+		strings = [[NSMutableArray alloc] initWithArray:strings copyItems:YES];
+	} else {
+		strings = [[NSMutableArray alloc] init];
+	}
+	[_components setObject:strings forKey:key];
 }
 
 @end
@@ -106,7 +143,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 
 	NSScanner *scanner = [NSScanner scannerWithString:string];
 
-	STURLQueryStringComponents *components = [[STURLQueryStringComponents alloc] init];
+	STMutableURLQueryStringComponents *components = [[STMutableURLQueryStringComponents alloc] init];
 
 	while (![scanner isAtEnd]) {
 		NSString *key = nil, *value = nil;
@@ -152,7 +189,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 		[components addString:decodedValue forKey:decodedKey];
 	}
 
-	return components;
+	return [components copy];
 }
 
 @end
