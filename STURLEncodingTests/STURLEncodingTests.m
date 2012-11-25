@@ -59,6 +59,46 @@
 }
 
 
+- (void)testQueryStringBuilding {
+	{
+		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
+		[components setString:@"bar" forKey:@"foo"];
+		STAssertTrue([components containsKey:@"foo"], @"");
+		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		NSString *queryString = [STURLEncoding queryStringFromComponents:components];
+		STAssertEqualObjects(queryString, @"foo=bar", @"");
+	}
+	{
+		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
+		[components setString:@"bar" forKey:@"foo"];
+		[components addString:@"baz" forKey:@"foo"];
+		STAssertTrue([components containsKey:@"foo"], @"");
+		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		NSArray *foo = @[ @"bar", @"baz" ];
+		STAssertEqualObjects([components stringsForKey:@"foo"], foo, @"");
+		NSString *queryString = [STURLEncoding queryStringFromComponents:components];
+		STAssertEqualObjects(queryString, @"foo[]=bar&foo[]=baz", @"");
+	}
+	{
+		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
+		[components setString:@"bar" forKey:@"foo"];
+		[components setString:@"AAA" forKey:@"aaa"];
+		STAssertTrue([components containsKey:@"foo"], @"");
+		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		NSString *queryString = [STURLEncoding queryStringFromComponents:components];
+		STAssertEqualObjects(queryString, @"aaa=AAA&foo=bar", @"");
+	}
+	{
+		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
+		[components setString:@"b?r" forKey:@"foo"];
+		[components setString:@"A&A" forKey:@"aaa"];
+		STAssertTrue([components containsKey:@"foo"], @"");
+		STAssertEqualObjects([components stringForKey:@"foo"], @"b?r", @"");
+		NSString *queryString = [STURLEncoding queryStringFromComponents:components];
+		STAssertEqualObjects(queryString, @"aaa=A%26A&foo=b%3Fr", @"");
+	}
+}
+
 - (void)testQueryString {
 	{
 		NSError *error = nil;

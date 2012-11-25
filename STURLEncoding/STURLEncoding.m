@@ -15,6 +15,10 @@
 NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 
 
+@interface STURLQueryStringComponents ()
+- (NSArray *)allKeys;
+@end
+
 @implementation STURLQueryStringComponents {
 @package
 	NSMutableDictionary *_components;
@@ -52,6 +56,10 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 
 - (BOOL)containsKey:(NSString *)key {
 	return [_components objectForKey:key] != nil;
+}
+
+- (NSArray *)allKeys {
+	return [_components allKeys];
 }
 
 - (NSArray *)stringsForKey:(NSString *)key {
@@ -127,6 +135,36 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 	string = [string stringByReplacingOccurrencesOfString:@"+" withString:@" "];
 	NSString *decoded = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (__bridge CFStringRef)string, CFSTR(""), kCFStringEncodingUTF8);
 	return decoded;
+}
+
+
+#pragma mark - Query String Building
+
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components {
+	NSMutableString *queryString = [NSMutableString string];
+	NSArray *keys = [[components allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
+		return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
+	}];
+	for (NSString *key in keys) {
+		NSArray *strings = [components stringsForKey:key];
+		if ([strings count] == 0) {
+			continue;
+		}
+		if ([strings count] == 1) {
+			if ([queryString length]) {
+				[queryString appendString:@"&"];
+			}
+			[queryString appendFormat:@"%@=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:[strings lastObject]]];
+		} else {
+			for (NSString *string in strings) {
+				if ([queryString length]) {
+					[queryString appendString:@"&"];
+				}
+				[queryString appendFormat:@"%@[]=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:string]];
+			}
+		}
+	}
+	return queryString;
 }
 
 

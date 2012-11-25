@@ -45,6 +45,11 @@ typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 + (NSString *)stringByURLDecodingString:(NSString *)string;
 
 
+#pragma mark - Query String Building
+
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components;
+
+
 #pragma mark - Query String Decoding
 
 + (STURLQueryStringComponents *)componentsFromQueryString:(NSString *)string;
