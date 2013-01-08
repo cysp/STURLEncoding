@@ -84,6 +84,11 @@
 			STAssertEqualObjects(queryString, @"", @"");
 		}
 	}
+	{
+		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
+		[components addString:nil forKey:@"a"];
+		STAssertFalse([components containsKey:@"a"], @"", nil);
+	}
 }
 
 

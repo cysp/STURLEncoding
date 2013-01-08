@@ -85,13 +85,13 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 @implementation STMutableURLQueryStringComponents
 
 - (void)addString:(NSString *)string forKey:(NSString *)key {
-	NSMutableArray *stringsForKey = [_components objectForKey:key];
-	if (!stringsForKey) {
-		stringsForKey = [NSMutableArray array];
-		[_components setObject:stringsForKey forKey:key];
-	}
-
 	if (string) {
+		NSMutableArray *stringsForKey = [_components objectForKey:key];
+		if (!stringsForKey) {
+			stringsForKey = [NSMutableArray array];
+			[_components setObject:stringsForKey forKey:key];
+		}
+
 		[stringsForKey addObject:string];
 	}
 }
