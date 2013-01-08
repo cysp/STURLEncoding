@@ -30,6 +30,7 @@ typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 - (void)setString:(NSString *)string forKey:(NSString *)key;
 - (void)addString:(NSString *)string forKey:(NSString *)key;
 - (void)setStrings:(NSArray *)strings forKey:(NSString *)key;
+- (void)removeStringsForKey:(NSString *)key;
 @end
 
 

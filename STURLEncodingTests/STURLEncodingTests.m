@@ -59,6 +59,34 @@
 }
 
 
+- (void)testQueryStringComponents {
+	{
+		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
+
+		[components setString:nil forKey:@"a"];
+		STAssertFalse([components containsKey:@"a"], @"", nil);
+		{
+			NSString *queryString = [STURLEncoding queryStringFromComponents:components];
+			STAssertEqualObjects(queryString, @"", @"");
+		}
+
+		[components setString:@"" forKey:@"a"];
+		STAssertTrue([components containsKey:@"a"], @"", nil);
+		{
+			NSString *queryString = [STURLEncoding queryStringFromComponents:components];
+			STAssertEqualObjects(queryString, @"a=", @"");
+		}
+
+		[components removeStringsForKey:@"a"];
+		STAssertFalse([components containsKey:@"a"], @"", nil);
+		{
+			NSString *queryString = [STURLEncoding queryStringFromComponents:components];
+			STAssertEqualObjects(queryString, @"", @"");
+		}
+	}
+}
+
+
 - (void)testQueryStringBuilding {
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];

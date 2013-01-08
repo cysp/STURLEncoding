@@ -97,16 +97,21 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 }
 
 - (void)setString:(NSString *)string forKey:(NSString *)key {
-	[self setStrings:@[ string ] forKey:key];
+	NSArray *strings = string ? @[ string ] : nil;
+	[self setStrings:strings forKey:key];
 }
 
 - (void)setStrings:(NSArray *)strings forKey:(NSString *)key {
 	if (strings) {
 		strings = [[NSMutableArray alloc] initWithArray:strings copyItems:YES];
+		[_components setObject:strings forKey:key];
 	} else {
-		strings = [[NSMutableArray alloc] init];
+		[_components removeObjectForKey:key];
 	}
-	[_components setObject:strings forKey:key];
+}
+
+- (void)removeStringsForKey:(NSString *)key {
+	[_components removeObjectForKey:key];
 }
 
 @end
