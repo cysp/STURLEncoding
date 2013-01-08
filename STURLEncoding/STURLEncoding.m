@@ -102,8 +102,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 
 - (void)setStrings:(NSArray *)strings forKey:(NSString *)key {
 	if (strings) {
-		strings = [[NSMutableArray alloc] initWithArray:strings copyItems:YES];
-		[_components setObject:strings forKey:key];
+		[_components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
 	} else {
 		[_components removeObjectForKey:key];
 	}
