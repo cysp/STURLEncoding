@@ -107,7 +107,6 @@
 		STAssertTrue([components containsKey:@"foo"], @"");
 		STAssertFalse([components containsKey:@"bar"], @"");
 		STAssertNil([components stringForKey:@"foo"], @"");
-		STAssertNil(components[@"foo"], @"");
 	}
 	{
 		NSError *error = nil;
@@ -125,8 +124,7 @@
 		STAssertTrue([components containsKey:@"foo"], @"");
 		STAssertTrue([components containsKey:@"bar"], @"");
 		STAssertNil([components stringForKey:@"foo"], @"");
-		STAssertNil(components[@"foo"], @"");
-		STAssertNil(components[@"bar"], @"");
+		STAssertNil([components stringForKey:@"bar"], @"");
 	}
 	{
 		NSError *error = nil;
@@ -137,7 +135,7 @@
 		STAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
 		STAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
 		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertNil(components[@"bar"], @"");
+		STAssertNil([components stringForKey:@"bar"], @"");
 	}
 	{
 		NSError *error = nil;
@@ -189,7 +187,6 @@
 		STAssertTrue([components containsKey:@"bar"], @"");
 		STAssertEqualObjects(components[@"bar"], @"quuux", @"");
 		STAssertNil([components stringForKey:@"foo"], @"");
-		STAssertNil(components[@"foo"], @"");
 	}
 	{
 		NSError *error = nil;
@@ -199,7 +196,6 @@
 		STAssertTrue([components containsKey:@"bar"], @"");
 		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
 		STAssertNil([components stringForKey:@"foo"], @"");
-		STAssertNil(components[@"foo"], @"");
 	}
 	{
 		NSError *error = nil;
@@ -209,7 +205,6 @@
 		STAssertTrue([components containsKey:@"bar"], @"");
 		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
 		STAssertNil([components stringForKey:@"f&oo"], @"");
-		STAssertNil(components[@"f&oo"], @"");
 	}
 	{
 		NSError *error = nil;
@@ -219,7 +214,6 @@
 		STAssertTrue([components containsKey:@"bar"], @"");
 		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
 		STAssertNil([components stringForKey:@"f&oo"], @"");
-		STAssertNil(components[@"f&oo"], @"");
 	}
 	{
 		NSError *error = nil;
