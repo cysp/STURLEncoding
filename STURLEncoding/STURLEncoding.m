@@ -92,7 +92,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 			[_components setObject:stringsForKey forKey:key];
 		}
 
-		[stringsForKey addObject:string];
+		[stringsForKey addObject:[string copy]];
 	}
 }
 
