@@ -184,7 +184,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 	STMutableURLQueryStringComponents *components = [[STMutableURLQueryStringComponents alloc] init];
 
 	while (![scanner isAtEnd]) {
-		NSString *key = nil, *value = nil;
+		NSString *key = nil, *value = @"";
 		if (![scanner scanUpToCharactersFromSet:separatorsOrEqualsCharacterSet intoString:&key]) {
 			if (error) {
 				*error = [NSError errorWithDomain:kSTURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
@@ -192,9 +192,7 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 			return nil;
 		}
 		if ([scanner scanCharactersFromSet:equalsCharacterSet intoString:NULL]) {
-			if (![scanner scanUpToCharactersFromSet:separatorsCharacterSet intoString:&value]) {
-				value = @"";
-			}
+			[scanner scanUpToCharactersFromSet:separatorsCharacterSet intoString:&value];
 		}
 		if (![scanner isAtEnd]) {
 			if (![scanner scanCharactersFromSet:separatorsCharacterSet intoString:NULL]) {
