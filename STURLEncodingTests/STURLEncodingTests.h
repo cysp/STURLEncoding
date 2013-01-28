@@ -1,6 +1,6 @@
 //
 //  STURLEncodingTests.h
-//  STURLEncodingTests
+//  STURLEncoding
 //
 //  Copyright (c) 2012-2013 Scott Talbot. All rights reserved.
 //
