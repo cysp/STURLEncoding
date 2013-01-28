@@ -73,12 +73,7 @@
 			[scanner scanUpToCharactersFromSet:separatorsCharacterSet intoString:&value];
 		}
 		if (![scanner isAtEnd]) {
-			if (![scanner scanCharactersFromSet:separatorsCharacterSet intoString:NULL]) {
-				if (error) {
-					*error = [NSError errorWithDomain:kSTURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
-				}
-				return nil;
-			}
+			[scanner scanCharactersFromSet:separatorsCharacterSet intoString:NULL];
 		}
 
 		NSString *decodedKey = [STURLEncoding stringByURLDecodingString:key];
