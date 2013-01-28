@@ -12,7 +12,7 @@
 
 @implementation STURLQueryStringEncodingTests
 
-- (void)testQueryStringComponents {
+- (void)testSimple {
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 
@@ -43,7 +43,6 @@
 		STAssertFalse([components containsKey:@"a"], @"", nil);
 	}
 }
-
 
 - (void)testQueryStringBuilding {
 	{
