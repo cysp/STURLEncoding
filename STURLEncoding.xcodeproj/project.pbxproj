@@ -14,6 +14,8 @@
 		2C6EE5B3163E71D30064800F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE5A0163E71D30064800F /* Foundation.framework */; };
 		2C6EE5B6163E71D30064800F /* libSTURLEncoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE59D163E71D30064800F /* libSTURLEncoding.a */; };
 		2C6EE5BF163E71D30064800F /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
+		2CCE16CB16B63D5900C42C7B /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
+		2CCE16CE16B63E3400C42C7B /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,10 @@
 		2C6EE5B9163E71D30064800F /* STURLEncodingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "STURLEncodingTests-Info.plist"; sourceTree = "<group>"; };
 		2C6EE5BD163E71D30064800F /* STURLEncodingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STURLEncodingTests.h; sourceTree = "<group>"; };
 		2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncodingTests.m; sourceTree = "<group>"; };
+		2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncoding.h; sourceTree = "<group>"; };
+		2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncoding.m; sourceTree = "<group>"; };
+		2CCE16CC16B63E3400C42C7B /* STURLQueryStringEncodingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncodingTests.h; sourceTree = "<group>"; };
+		2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncodingTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 			children = (
 				2C6EE5A5163E71D30064800F /* STURLEncoding.h */,
 				2C6EE5A7163E71D30064800F /* STURLEncoding.m */,
+				2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */,
+				2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */,
 			);
 			path = STURLEncoding;
 			sourceTree = "<group>";
@@ -115,6 +123,8 @@
 			children = (
 				2C6EE5BD163E71D30064800F /* STURLEncodingTests.h */,
 				2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */,
+				2CCE16CC16B63E3400C42C7B /* STURLQueryStringEncodingTests.h */,
+				2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */,
 				2C6EE5B9163E71D30064800F /* STURLEncodingTests-Info.plist */,
 			);
 			path = STURLEncodingTests;
@@ -218,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6EE5A8163E71D30064800F /* STURLEncoding.m in Sources */,
+				2CCE16CB16B63D5900C42C7B /* STURLQueryStringEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6EE5BF163E71D30064800F /* STURLEncodingTests.m in Sources */,
+				2CCE16CE16B63E3400C42C7B /* STURLQueryStringEncodingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +378,7 @@
 				2C6EE5C4163E71D30064800F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C6EE5C5163E71D30064800F /* Build configuration list for PBXNativeTarget "STURLEncodingTests" */ = {
 			isa = XCConfigurationList;
@@ -374,6 +387,7 @@
 				2C6EE5C7163E71D30064800F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
