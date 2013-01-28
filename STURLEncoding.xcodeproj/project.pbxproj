@@ -51,7 +51,7 @@
 		2C6EE5A7163E71D30064800F /* STURLEncoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncoding.m; sourceTree = "<group>"; };
 		2C6EE5AE163E71D30064800F /* STURLEncodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6EE5AF163E71D30064800F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		2C6EE5B9163E71D30064800F /* STURLEncodingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "STURLEncodingTests-Info.plist"; sourceTree = "<group>"; };
+		2C6EE5B9163E71D30064800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C6EE5BD163E71D30064800F /* STURLEncodingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STURLEncodingTests.h; sourceTree = "<group>"; };
 		2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncodingTests.m; sourceTree = "<group>"; };
 		2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncoding.h; sourceTree = "<group>"; };
@@ -126,11 +126,11 @@
 		2C6EE5B7163E71D30064800F /* STURLEncodingTests */ = {
 			isa = PBXGroup;
 			children = (
+				2C6EE5B9163E71D30064800F /* Info.plist */,
 				2C6EE5BD163E71D30064800F /* STURLEncodingTests.h */,
 				2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */,
 				2CCE16CC16B63E3400C42C7B /* STURLQueryStringEncodingTests.h */,
 				2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */,
-				2C6EE5B9163E71D30064800F /* STURLEncodingTests-Info.plist */,
 			);
 			path = STURLEncodingTests;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				INFOPLIST_FILE = "STURLEncodingTests/STURLEncodingTests-Info.plist";
+				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -359,7 +359,7 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				INFOPLIST_FILE = "STURLEncodingTests/STURLEncodingTests-Info.plist";
+				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
