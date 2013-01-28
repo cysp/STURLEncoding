@@ -11,21 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface STURLQueryStringComponents : NSObject<NSCopying,NSMutableCopying>
-+ (instancetype)components;
-- (BOOL)containsKey:(NSString *)key;
-- (NSString *)stringForKey:(NSString *)key;
-- (NSArray *)stringsForKey:(NSString *)key;
-- (id)objectForKeyedSubscript:(NSString *)key;
-@end
-
-@interface STMutableURLQueryStringComponents : STURLQueryStringComponents
-- (void)setString:(NSString *)string forKey:(NSString *)key;
-- (void)addString:(NSString *)string forKey:(NSString *)key;
-- (void)setStrings:(NSArray *)strings forKey:(NSString *)key;
-- (void)removeStringsForKey:(NSString *)key;
-@end
+#import "STURLQueryStringComponents.h"
 
 
 @interface STURLQueryStringEncoding : NSObject { }

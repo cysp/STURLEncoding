@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5765E816B643AD002C6503 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
 		2C6EE5A1163E71D30064800F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE5A0163E71D30064800F /* Foundation.framework */; };
 		2C6EE5A6163E71D30064800F /* STURLEncoding.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C6EE5A5163E71D30064800F /* STURLEncoding.h */; };
 		2C6EE5A8163E71D30064800F /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
@@ -42,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringComponents.h; sourceTree = "<group>"; };
+		2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponents.m; sourceTree = "<group>"; };
 		2C6EE59D163E71D30064800F /* libSTURLEncoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTURLEncoding.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6EE5A0163E71D30064800F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C6EE5A5163E71D30064800F /* STURLEncoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STURLEncoding.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				2C6EE5A7163E71D30064800F /* STURLEncoding.m */,
 				2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */,
 				2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */,
+				2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */,
+				2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */,
 			);
 			path = STURLEncoding;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 			files = (
 				2C6EE5A8163E71D30064800F /* STURLEncoding.m in Sources */,
 				2CCE16CB16B63D5900C42C7B /* STURLQueryStringEncoding.m in Sources */,
+				2C5765E816B643AD002C6503 /* STURLQueryStringComponents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
