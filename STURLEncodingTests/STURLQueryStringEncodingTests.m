@@ -86,6 +86,13 @@
 
 - (void)testQueryString {
 	{
+		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo"];
+		STAssertNotNil(components, @"error decoding query string");
+		STAssertTrue([components containsKey:@"foo"], @"");
+		STAssertFalse([components containsKey:@"bar"], @"");
+		STAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
+	}
+	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo" error:&error];
 		STAssertNotNil(components, @"error decoding query string: %@", error);
@@ -280,6 +287,38 @@
 		NSArray *expected = @[ @"", @"qu u?ux", @"" ];
 		STAssertEqualObjects(components[@"foo"], expected, @"");
 		STAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+	}
+}
+
+- (void)testQueryStringDecodingFailures {
+	{
+		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"" error:&error];
+		STAssertNotNil(components, @"", error);
+	}
+	{
+		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"=" error:&error];
+		STAssertNil(components, @"", error);
+		STAssertNotNil(error, @"", nil);
+	}
+	{
+		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"&=" error:&error];
+		STAssertNil(components, @"", error);
+		STAssertNotNil(error, @"", nil);
+	}
+	{
+		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"a=%" error:&error];
+		STAssertNil(components, @"", error);
+		STAssertNotNil(error, @"", nil);
+	}
+	{
+		NSError *error = nil;
+		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"a%=%" error:&error];
+		STAssertNil(components, @"", error);
+		STAssertNotNil(error, @"", nil);
 	}
 }
 
