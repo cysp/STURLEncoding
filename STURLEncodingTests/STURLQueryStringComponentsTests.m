@@ -57,4 +57,30 @@
 	}
 }
 
+- (void)testDictionaryConstructor {
+	{
+		NSDictionary * const input = @{ @"a": @"a" };
+		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
+		STAssertEqualObjects([components stringForKey:@"a"], @"a", @"", nil);
+	}
+	{
+		NSDictionary * const input = @{ @"a": @[ @"a" ] };
+		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
+		STAssertNil(components, @"", nil);
+	}
+	{
+		NSDictionary * const input = @{ @"a": @(1) };
+		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
+		STAssertNil(components, @"", nil);
+	}
+
+	{
+		NSDictionary * const input = @{ @"a": @"a" };
+		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
+		STAssertEqualObjects([components stringForKey:@"a"], @"a", @"", nil);
+		[components setString:@"b" forKey:@"a"];
+		STAssertEqualObjects([components stringForKey:@"a"], @"b", @"", nil);
+	}
+}
+
 @end

@@ -15,6 +15,7 @@
 
 @interface STURLQueryStringComponents : NSObject<NSCopying,NSMutableCopying>
 + (instancetype)components;
++ (instancetype)componentsWithDictionary:(NSDictionary *)dict;
 - (NSArray *)allKeys;
 - (BOOL)containsKey:(NSString *)key;
 - (NSString *)stringForKey:(NSString *)key;

@@ -13,18 +13,98 @@
 #import "STURLQueryStringComponents.h"
 
 
+static NSString *STEnsureNSString(id<NSObject> obj) {
+	if ([obj isKindOfClass:[NSString class]]) {
+		return (NSString *)obj;
+	}
+	return nil;
+}
+
+static NSArray *STEnsureNSArray(id<NSObject> obj) {
+	if ([obj isKindOfClass:[NSArray class]]) {
+		return (NSArray *)obj;
+	}
+	return nil;
+}
+
+static BOOL STURLQueryStringComponentsIsValidArray(NSArray *array) {
+	for (id obj in array) {
+		if ([obj isKindOfClass:[NSString class]]) {
+			continue;
+		}
+
+		return NO;
+	}
+
+	return YES;
+}
+
+static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
+	__block BOOL isValid = YES;
+
+	[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		if (![key isKindOfClass:[NSString class]]) {
+			isValid = NO, *stop = YES;
+			return;
+		}
+
+		if ([obj isKindOfClass:[NSString class]]) {
+			return;
+		}
+
+		if ([obj isKindOfClass:[NSArray class]]) {
+			if (!STURLQueryStringComponentsIsValidArray(obj)) {
+				isValid = NO, *stop = YES;
+				return;
+			}
+		}
+
+		isValid = NO, *stop = YES;
+	}];
+
+	return isValid;
+}
+
+
 @implementation STURLQueryStringComponents {
 	@package
 	NSMutableDictionary *_components;
 }
 
 + (instancetype)components {
-	return [[self alloc] init];
+	return [[self alloc] initWithDictionary:nil];
+}
+
++ (instancetype)componentsWithDictionary:(NSDictionary *)dict {
+	return [[self alloc] initWithDictionary:dict];
 }
 
 - (id)init {
+	return [self initWithDictionary:nil];
+}
+- (id)initWithDictionary:(NSDictionary *)dict {
+	if (!STURLQueryStringComponentsIsValidDictionary(dict)) {
+		return nil;
+	}
+
 	if ((self = [super init])) {
 		_components = [NSMutableDictionary dictionary];
+
+		[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+			NSString * const string = STEnsureNSString(obj);
+			if (string) {
+				[_components setObject:[[NSMutableArray alloc] initWithObjects:[string copy], nil] forKey:key];
+				return;
+			}
+
+			NSArray * const strings = STEnsureNSArray(obj);
+			if (strings) {
+				[_components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
+				return;
+			}
+
+			NSAssert(0, @"unreachable", nil);
+		}];
 	}
 	return self;
 }
