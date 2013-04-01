@@ -10,9 +10,3 @@ FRAMEWORK_VERSION = A
 INFOPLIST_FILE = STURLEncoding/Info.plist
 WRAPPER_EXTENSION = framework
 
-
-//:configuration = Debug
-DEBUG_INFORMATION_FORMAT = dwarf
-
-//:configuration = Release
-DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
