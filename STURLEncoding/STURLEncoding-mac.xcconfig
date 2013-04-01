@@ -1,0 +1,18 @@
+//  Copyright (c) 2013 Scott Talbot. All rights reserved.
+
+
+SDKROOT = macosx
+ARCHS = $(ARCHS_STANDARD_64_BIT)
+MACOSX_DEPLOYMENT_TARGET = 10.8
+DYLIB_CURRENT_VERSION = 1
+DYLIB_COMPATIBILITY_VERSION = 1
+FRAMEWORK_VERSION = A
+INFOPLIST_FILE = STURLEncoding/Info.plist
+WRAPPER_EXTENSION = framework
+
+
+//:configuration = Debug
+DEBUG_INFORMATION_FORMAT = dwarf
+
+//:configuration = Release
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym

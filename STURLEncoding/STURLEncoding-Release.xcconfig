@@ -1,0 +1,8 @@
+//  Copyright (c) 2013 Scott Talbot. All rights reserved.
+
+#include "STURLEncoding.xcconfig"
+
+
+VALIDATE_PRODUCT = YES
+COPY_PHASE_STRIP = YES
+GCC_OPTIMIZATION_LEVEL = s

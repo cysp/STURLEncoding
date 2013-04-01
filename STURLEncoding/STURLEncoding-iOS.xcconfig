@@ -1,0 +1,8 @@
+//  Copyright (c) 2013 Scott Talbot. All rights reserved.
+
+
+SDKROOT = iphoneos
+ARCHS = $(ARCHS_STANDARD_32_BIT)
+IPHONEOS_DEPLOYMENT_TARGET = 5.0
+
+SKIP_INSTALL = YES

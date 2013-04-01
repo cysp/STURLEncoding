@@ -1,0 +1,10 @@
+//  Copyright (c) 2013 Scott Talbot. All rights reserved.
+
+#include "STURLEncoding.xcconfig"
+
+
+ONLY_ACTIVE_ARCH = YES
+VALIDATE_PRODUCT = NO
+GCC_OPTIMIZATION_LEVEL = 0
+
+GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)

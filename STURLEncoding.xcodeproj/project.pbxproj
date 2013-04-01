@@ -44,6 +44,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C0EB70817096F6E0050BF86 /* STURLEncoding.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = STURLEncoding.xcconfig; sourceTree = "<group>"; };
+		2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-iOS.xcconfig"; sourceTree = "<group>"; };
+		2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-mac.xcconfig"; sourceTree = "<group>"; };
+		2C0EB70B1709761B0050BF86 /* STURLEncoding-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Debug.xcconfig"; sourceTree = "<group>"; };
+		2C0EB70C170976260050BF86 /* STURLEncoding-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Release.xcconfig"; sourceTree = "<group>"; };
 		2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringComponents.h; sourceTree = "<group>"; };
 		2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponents.m; sourceTree = "<group>"; };
 		2C5765EC16B652F5002C6503 /* STURLQueryStringComponentsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringComponentsTests.h; sourceTree = "<group>"; };
@@ -131,6 +136,11 @@
 		2C6EE5A2163E71D30064800F /* STURLEncoding */ = {
 			isa = PBXGroup;
 			children = (
+				2C0EB70817096F6E0050BF86 /* STURLEncoding.xcconfig */,
+				2C0EB70B1709761B0050BF86 /* STURLEncoding-Debug.xcconfig */,
+				2C0EB70C170976260050BF86 /* STURLEncoding-Release.xcconfig */,
+				2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */,
+				2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */,
 				2C57666F16B6593B002C6503 /* Info.plist */,
 				2C6EE5A5163E71D30064800F /* STURLEncoding.h */,
 				2C6EE5A7163E71D30064800F /* STURLEncoding.m */,
@@ -374,6 +384,7 @@
 /* Begin XCBuildConfiguration section */
 		2C57660716B654D3002C6503 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -394,6 +405,7 @@
 		};
 		2C57660816B654D3002C6503 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -415,150 +427,55 @@
 		};
 		2C57663A16B656A6002C6503 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
-				INFOPLIST_FILE = STURLEncoding/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = STURLEncoding;
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
 		2C57663B16B656A6002C6503 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
-				INFOPLIST_FILE = STURLEncoding/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = STURLEncoding;
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};
 		2C6EE5C0163E71D30064800F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70B1709761B0050BF86 /* STURLEncoding-Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
 		2C6EE5C1163E71D30064800F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70C170976260050BF86 /* STURLEncoding-Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		2C6EE5C3163E71D30064800F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				DSTROOT = /tmp/STURLEncoding.dst;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = STURLEncoding;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
 		2C6EE5C4163E71D30064800F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				DSTROOT = /tmp/STURLEncoding.dst;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = STURLEncoding;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
 		2C6EE5C6163E71D30064800F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
@@ -575,6 +492,7 @@
 		};
 		2C6EE5C7163E71D30064800F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
