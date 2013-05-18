@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C57661316B656A6002C6503"
-               BuildableName = "STURLEncoding.framework"
+               BuildableName = "libSTURLEncoding.a"
                BlueprintName = "STURLEncoding-mac"
                ReferencedContainer = "container:STURLEncoding.xcodeproj">
             </BuildableReference>
