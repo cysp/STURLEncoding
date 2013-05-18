@@ -20,6 +20,20 @@
                ReferencedContainer = "container:STURLEncoding.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2C6EE5AD163E71D30064800F"
+               BuildableName = "STURLEncodingTests.octest"
+               BlueprintName = "STURLEncodingTests-iOS"
+               ReferencedContainer = "container:STURLEncoding.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
