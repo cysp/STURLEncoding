@@ -268,7 +268,7 @@
 		2C6EE594163E71D30064800F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Scott Talbot";
 			};
 			buildConfigurationList = 2C6EE597163E71D30064800F /* Build configuration list for PBXProject "STURLEncoding" */;
@@ -418,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 			};
 			name = Debug;
 		};
@@ -425,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 			};
 			name = Release;
 		};
