@@ -12,6 +12,10 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_OPTIONS(NSUInteger, STURLQueryStringComponentsDictionaryRepresentationOptions) {
+    STURLQueryStringComponentsDictionaryRepresentationUseFirstValue = (1UL << 0),
+};
+
 
 @interface STURLQueryStringComponents : NSObject<NSCopying,NSMutableCopying>
 + (instancetype)components;
@@ -21,6 +25,8 @@
 - (NSString *)stringForKey:(NSString *)key;
 - (NSArray *)stringsForKey:(NSString *)key;
 - (id)objectForKeyedSubscript:(NSString *)key;
+- (NSDictionary *)dictionaryRepresentation;
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STURLQueryStringComponentsDictionaryRepresentationOptions)options;
 @end
 
 @interface STMutableURLQueryStringComponents : STURLQueryStringComponents

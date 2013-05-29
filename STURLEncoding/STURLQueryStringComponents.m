@@ -153,6 +153,35 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	return [strings count] ? strings : nil;
 }
 
+- (NSDictionary *)dictionaryRepresentation {
+    return [self dictionaryRepresentationWithOptions:0];
+}
+
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STURLQueryStringComponentsDictionaryRepresentationOptions)options {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[_components count]];
+
+    [_components enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSArray *values, BOOL *stop) {
+        NSUInteger count = [values count];
+        switch (count) {
+            case 0:
+                dictionary[key] = @"";
+                break;
+            case 1:
+                dictionary[key] = [values objectAtIndex:0];
+                break;
+            default:
+                if (options & STURLQueryStringComponentsDictionaryRepresentationUseFirstValue) {
+                    dictionary[key] = [values objectAtIndex:0];
+                } else {
+                    dictionary[key] = values;
+                }
+                break;
+        }
+    }];
+    
+    return dictionary;
+}
+
 @end
 
 
