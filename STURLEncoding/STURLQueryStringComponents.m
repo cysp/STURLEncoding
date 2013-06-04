@@ -90,7 +90,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	if ((self = [super init])) {
 		_components = [NSMutableDictionary dictionary];
 
-		[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop __unused) {
 			NSString * const string = STEnsureNSString(obj);
 			if (string) {
 				[_components setObject:[[NSMutableArray alloc] initWithObjects:[string copy], nil] forKey:key];
@@ -111,7 +111,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 
 - (id)copyWithZone:(NSZone *)zone {
 	STURLQueryStringComponents *other = [[STURLQueryStringComponents allocWithZone:zone] init];
-	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop __unused) {
 		NSMutableArray *otherStrings = [[NSMutableArray allocWithZone:zone] initWithArray:obj copyItems:YES];
 		[other->_components setObject:otherStrings forKey:key];
 	}];
@@ -120,7 +120,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 
 - (id)mutableCopyWithZone:(NSZone *)zone {
 	STMutableURLQueryStringComponents *other = [[STMutableURLQueryStringComponents allocWithZone:zone] init];
-	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop __unused) {
 		NSMutableArray *otherStrings = [[NSMutableArray allocWithZone:zone] initWithArray:obj copyItems:YES];
 		[other->_components setObject:otherStrings forKey:key];
 	}];
@@ -160,7 +160,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 - (NSDictionary *)dictionaryRepresentationWithOptions:(STURLQueryStringComponentsDictionaryRepresentationOptions)options {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[_components count]];
 
-    [_components enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSArray *values, BOOL *stop) {
+    [_components enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSArray *values, BOOL *stop __unused) {
         NSUInteger count = [values count];
         switch (count) {
             case 0:
