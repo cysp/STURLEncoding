@@ -88,18 +88,18 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	}
 
 	if ((self = [super init])) {
-		_components = [NSMutableDictionary dictionary];
+		NSMutableDictionary * const components = _components = [NSMutableDictionary dictionary];
 
 		[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop __unused) {
 			NSString * const string = STEnsureNSString(obj);
 			if (string) {
-				[_components setObject:[[NSMutableArray alloc] initWithObjects:[string copy], nil] forKey:key];
+				[components setObject:[[NSMutableArray alloc] initWithObjects:[string copy], nil] forKey:key];
 				return;
 			}
 
 			NSArray * const strings = STEnsureNSArray(obj);
 			if (strings) {
-				[_components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
+				[components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
 				return;
 			}
 
