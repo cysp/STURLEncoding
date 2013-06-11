@@ -5,9 +5,13 @@
 //  Copyright (c) 2012-2013 Scott Talbot. All rights reserved.
 //
 
-#import "STURLQueryStringEncodingTests.h"
+#import <SenTestingKit/SenTestingKit.h>
 
 #import "STURLQueryStringEncoding.h"
+
+
+@interface STURLQueryStringEncodingTests : SenTestCase
+@end
 
 
 @implementation STURLQueryStringEncodingTests

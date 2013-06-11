@@ -58,7 +58,6 @@
 		2C0EB70C170976260050BF86 /* STURLEncoding-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Release.xcconfig"; sourceTree = "<group>"; };
 		2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringComponents.h; sourceTree = "<group>"; };
 		2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponents.m; sourceTree = "<group>"; };
-		2C5765EC16B652F5002C6503 /* STURLQueryStringComponentsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringComponentsTests.h; sourceTree = "<group>"; };
 		2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponentsTests.m; sourceTree = "<group>"; };
 		2C5765F416B654D3002C6503 /* STURLEncodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C57661416B656A6002C6503 /* libSTURLEncoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTURLEncoding.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,12 +68,10 @@
 		2C6EE5AE163E71D30064800F /* STURLEncodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6EE5AF163E71D30064800F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2C6EE5B9163E71D30064800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C6EE5BD163E71D30064800F /* STURLEncodingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STURLEncodingTests.h; sourceTree = "<group>"; };
 		2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncodingTests.m; sourceTree = "<group>"; };
 		2C9C1E551711A226003E19B9 /* STURLEncoding-Coverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Coverage.xcconfig"; sourceTree = "<group>"; };
 		2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncoding.h; sourceTree = "<group>"; };
 		2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncoding.m; sourceTree = "<group>"; };
-		2CCE16CC16B63E3400C42C7B /* STURLQueryStringEncodingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncodingTests.h; sourceTree = "<group>"; };
 		2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncodingTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,11 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				2C6EE5B9163E71D30064800F /* Info.plist */,
-				2C6EE5BD163E71D30064800F /* STURLEncodingTests.h */,
 				2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */,
-				2C5765EC16B652F5002C6503 /* STURLQueryStringComponentsTests.h */,
 				2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */,
-				2CCE16CC16B63E3400C42C7B /* STURLQueryStringEncodingTests.h */,
 				2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */,
 			);
 			path = STURLEncodingTests;

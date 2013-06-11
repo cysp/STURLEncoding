@@ -5,10 +5,14 @@
 //  Copyright (c) 2013 Scott Talbot. All rights reserved.
 //
 
-#import "STURLQueryStringComponentsTests.h"
+#import <SenTestingKit/SenTestingKit.h>
 
 #import "STURLQueryStringComponents.h"
 #import "STURLQueryStringEncoding.h"
+
+
+@interface STURLQueryStringComponentsTests : SenTestCase
+@end
 
 
 @implementation STURLQueryStringComponentsTests
