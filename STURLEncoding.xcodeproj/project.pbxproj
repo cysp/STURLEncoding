@@ -434,9 +434,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C0EB70B1709761B0050BF86 /* STURLEncoding-Debug.xcconfig */;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 			};
 			name = Debug;
 		};
@@ -444,9 +441,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C0EB70C170976260050BF86 /* STURLEncoding-Release.xcconfig */;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 			};
 			name = Release;
 		};
@@ -490,9 +484,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C9C1E551711A226003E19B9 /* STURLEncoding-Coverage.xcconfig */;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 			};
 			name = Coverage;
 		};
