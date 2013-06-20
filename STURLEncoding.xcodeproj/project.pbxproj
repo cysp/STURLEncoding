@@ -442,7 +442,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
 			buildSettings = {
-				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Debug;
 		};
@@ -450,7 +449,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
 			buildSettings = {
-				ONLY_ACTIVE_ARCH = NO;
 			};
 			name = Release;
 		};
