@@ -19,6 +19,13 @@
 		2C6EE5A8163E71D30064800F /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
 		2C6EE5B0163E71D30064800F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE5AF163E71D30064800F /* SenTestingKit.framework */; };
 		2C6EE5BF163E71D30064800F /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
+		2CA4CC4C177324C600AA8640 /* STURLComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CA4CC4A177324C600AA8640 /* STURLComponents.h */; };
+		2CA4CC4D177324C600AA8640 /* STURLComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA4CC4B177324C600AA8640 /* STURLComponents.m */; };
+		2CA4CC4E177324C600AA8640 /* STURLComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA4CC4B177324C600AA8640 /* STURLComponents.m */; };
+		2CA4CC4F177324CD00AA8640 /* STURLComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA4CC4B177324C600AA8640 /* STURLComponents.m */; };
+		2CA4CC50177324CD00AA8640 /* STURLComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA4CC4B177324C600AA8640 /* STURLComponents.m */; };
+		2CA4CC531773269600AA8640 /* STURLComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA4CC521773269600AA8640 /* STURLComponentsTests.m */; };
+		2CA4CC541773269600AA8640 /* STURLComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA4CC521773269600AA8640 /* STURLComponentsTests.m */; };
 		2CCE16CB16B63D5900C42C7B /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
 		2CCE16CE16B63E3400C42C7B /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
 		2CCF4825174723F500BBE8A2 /* STURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6EE5A5163E71D30064800F /* STURLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +73,9 @@
 		2C6EE5B9163E71D30064800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncodingTests.m; sourceTree = "<group>"; };
 		2C9C1E551711A226003E19B9 /* STURLEncoding-Coverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Coverage.xcconfig"; sourceTree = "<group>"; };
+		2CA4CC4A177324C600AA8640 /* STURLComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLComponents.h; sourceTree = "<group>"; };
+		2CA4CC4B177324C600AA8640 /* STURLComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLComponents.m; sourceTree = "<group>"; };
+		2CA4CC521773269600AA8640 /* STURLComponentsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLComponentsTests.m; sourceTree = "<group>"; };
 		2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncoding.h; sourceTree = "<group>"; };
 		2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncoding.m; sourceTree = "<group>"; };
 		2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncodingTests.m; sourceTree = "<group>"; };
@@ -148,6 +158,8 @@
 				2C57666F16B6593B002C6503 /* Info.plist */,
 				2C6EE5A5163E71D30064800F /* STURLEncoding.h */,
 				2C6EE5A7163E71D30064800F /* STURLEncoding.m */,
+				2CA4CC4A177324C600AA8640 /* STURLComponents.h */,
+				2CA4CC4B177324C600AA8640 /* STURLComponents.m */,
 				2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */,
 				2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */,
 				2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */,
@@ -161,6 +173,7 @@
 			children = (
 				2C6EE5B9163E71D30064800F /* Info.plist */,
 				2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */,
+				2CA4CC521773269600AA8640 /* STURLComponentsTests.m */,
 				2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */,
 				2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */,
 			);
@@ -177,6 +190,7 @@
 				2CCF4825174723F500BBE8A2 /* STURLEncoding.h in Headers */,
 				2CCF4826174723F500BBE8A2 /* STURLQueryStringEncoding.h in Headers */,
 				2CCF4827174723F500BBE8A2 /* STURLQueryStringComponents.h in Headers */,
+				2CA4CC4C177324C600AA8640 /* STURLComponents.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA4CC541773269600AA8640 /* STURLComponentsTests.m in Sources */,
 				2C57660C16B6556F002C6503 /* STURLEncodingTests.m in Sources */,
 				2C57660D16B6556F002C6503 /* STURLQueryStringComponentsTests.m in Sources */,
 				2C57660E16B6556F002C6503 /* STURLQueryStringEncodingTests.m in Sources */,
@@ -320,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA4CC4E177324C600AA8640 /* STURLComponents.m in Sources */,
 				2C57667016B6597A002C6503 /* STURLEncoding.m in Sources */,
 				2C57667116B6597A002C6503 /* STURLQueryStringEncoding.m in Sources */,
 				2C57667216B6597A002C6503 /* STURLQueryStringComponents.m in Sources */,
@@ -330,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA4CC4D177324C600AA8640 /* STURLComponents.m in Sources */,
 				2C6EE5A8163E71D30064800F /* STURLEncoding.m in Sources */,
 				2CCE16CB16B63D5900C42C7B /* STURLQueryStringEncoding.m in Sources */,
 				2C5765E816B643AD002C6503 /* STURLQueryStringComponents.m in Sources */,
@@ -340,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA4CC531773269600AA8640 /* STURLComponentsTests.m in Sources */,
 				2C6EE5BF163E71D30064800F /* STURLEncodingTests.m in Sources */,
 				2CCE16CE16B63E3400C42C7B /* STURLQueryStringEncodingTests.m in Sources */,
 				2C5765EE16B652F5002C6503 /* STURLQueryStringComponentsTests.m in Sources */,
