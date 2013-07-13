@@ -1,26 +1,28 @@
+PROJECTNAME = 'STURLEncoding'.freeze
+
 namespace :test do
-	desc 'Execute STURLEncodingTests-iOS'
+	desc "Execute #{PROJECTNAME}Tests-iOS"
 	task :ios do
 		buildargs = [
-			'-project', 'STURLEncoding.xcodeproj',
-			'-scheme', 'STURLEncoding-iOS',
+			'-project', "#{PROJECTNAME}.xcodeproj",
+			'-scheme', "#{PROJECTNAME}-iOS",
 			'-sdk', 'iphonesimulator',
 		]
 		$success_ios = system('xctool', *(buildargs << 'test'))
 	end
 
-	desc 'Execute STURLEncodingTests-mac'
+	desc "Execute #{PROJECTNAME}Tests-mac"
 	task :mac do
 		buildargs = [
-			'-project', 'STURLEncoding.xcodeproj',
-			'-scheme', 'STURLEncoding-mac',
+			'-project', "#{PROJECTNAME}.xcodeproj",
+			'-scheme', "#{PROJECTNAME}-mac",
 			'-sdk', 'macosx',
 		]
 		$success_mac = system('xctool', *(buildargs << 'test'))
 	end
 end
 
-desc 'Execute STURLEncodingTests-iOS and -mac'
+desc "Execute #{PROJECTNAME}Tests-iOS and -mac"
 task :test => ['test:ios', 'test:mac'] do
 	exit 1 unless $success_ios
 	exit 1 unless $success_mac
