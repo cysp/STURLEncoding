@@ -1,5 +1,7 @@
 PROJECTNAME = 'STURLEncoding'.freeze
 
+task :default => 'test'
+
 namespace :test do
 	desc "Execute #{PROJECTNAME}Tests-iOS"
 	task :ios do
@@ -8,7 +10,10 @@ namespace :test do
 			'-scheme', "#{PROJECTNAME}-iOS",
 			'-sdk', 'iphonesimulator',
 		]
-		$success_ios = system('xctool', *(buildargs << 'test'))
+		testargs = [
+			'parallelize',
+		]
+		$success_ios = system('xctool', *(buildargs + [ 'test', *testargs ]))
 	end
 
 	desc "Execute #{PROJECTNAME}Tests-mac"
@@ -18,7 +23,10 @@ namespace :test do
 			'-scheme', "#{PROJECTNAME}-mac",
 			'-sdk', 'macosx',
 		]
-		$success_mac = system('xctool', *(buildargs << 'test'))
+		testargs = [
+			'parallelize',
+		]
+		$success_mac = system('xctool', *(buildargs + [ 'test', *testargs ]))
 	end
 end
 
@@ -27,5 +35,3 @@ task :test => ['test:ios', 'test:mac'] do
 	exit 1 unless $success_ios
 	exit 1 unless $success_mac
 end
-
-task :default => 'test'
