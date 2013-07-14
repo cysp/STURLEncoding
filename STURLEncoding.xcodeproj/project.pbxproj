@@ -8,14 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C5765E816B643AD002C6503 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
-		2C5765E916B6516A002C6503 /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
-		2C5765EA16B6516A002C6503 /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
-		2C5765EB16B6516A002C6503 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
 		2C5765EE16B652F5002C6503 /* STURLQueryStringComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */; };
 		2C5765F516B654D3002C6503 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE5AF163E71D30064800F /* SenTestingKit.framework */; };
-		2C57660916B6556F002C6503 /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
-		2C57660A16B6556F002C6503 /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
-		2C57660B16B6556F002C6503 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
 		2C57660C16B6556F002C6503 /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
 		2C57660D16B6556F002C6503 /* STURLQueryStringComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */; };
 		2C57660E16B6556F002C6503 /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
@@ -33,6 +27,8 @@
 		2CCF482C174724BE00BBE8A2 /* STURLEncoding.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C6EE5A5163E71D30064800F /* STURLEncoding.h */; };
 		2CCF482D174724BE00BBE8A2 /* STURLQueryStringEncoding.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */; };
 		2CCF482E174724BE00BBE8A2 /* STURLQueryStringComponents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */; };
+		2CD8A2DF1792E90A0095606C /* libSTURLEncoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE59D163E71D30064800F /* libSTURLEncoding.a */; };
+		2CD8A2E01792E90F0095606C /* libSTURLEncoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C57661416B656A6002C6503 /* libSTURLEncoding.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5765F516B654D3002C6503 /* SenTestingKit.framework in Frameworks */,
+				2CD8A2E01792E90F0095606C /* libSTURLEncoding.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6EE5B0163E71D30064800F /* SenTestingKit.framework in Frameworks */,
+				2CD8A2DF1792E90A0095606C /* libSTURLEncoding.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,9 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C57660916B6556F002C6503 /* STURLEncoding.m in Sources */,
-				2C57660A16B6556F002C6503 /* STURLQueryStringEncoding.m in Sources */,
-				2C57660B16B6556F002C6503 /* STURLQueryStringComponents.m in Sources */,
 				2C57660C16B6556F002C6503 /* STURLEncodingTests.m in Sources */,
 				2C57660D16B6556F002C6503 /* STURLQueryStringComponentsTests.m in Sources */,
 				2C57660E16B6556F002C6503 /* STURLQueryStringEncodingTests.m in Sources */,
@@ -347,9 +342,6 @@
 			files = (
 				2C6EE5BF163E71D30064800F /* STURLEncodingTests.m in Sources */,
 				2CCE16CE16B63E3400C42C7B /* STURLQueryStringEncodingTests.m in Sources */,
-				2C5765E916B6516A002C6503 /* STURLEncoding.m in Sources */,
-				2C5765EA16B6516A002C6503 /* STURLQueryStringEncoding.m in Sources */,
-				2C5765EB16B6516A002C6503 /* STURLQueryStringComponents.m in Sources */,
 				2C5765EE16B652F5002C6503 /* STURLQueryStringComponentsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
