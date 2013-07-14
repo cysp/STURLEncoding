@@ -2,4 +2,8 @@ language: objective-c
 before_install:
     - brew update
     - brew install xctool
+    - gem install rest-client
+    - curl -O -L https://github.com/cysp/STCoverage/releases/download/STCoverage-0.0.1/STCoverage && chmod +x STCoverage
 script: rake -s test
+after_success:
+    - PATH=".:$PATH" rake -s coveralls:mac
