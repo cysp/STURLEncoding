@@ -42,7 +42,10 @@ module BuildCommands
 	end
 
 	def analyze
-		system('xctool', *(@BUILDARGS + [ 'analyze' ]))
+		analyzeargs = [
+			'-failOnWarnings',
+		]
+		system('xctool', *(@BUILDARGS + [ 'analyze', *analyzeargs ]))
 	end
 
 	def test
