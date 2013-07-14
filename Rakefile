@@ -13,7 +13,7 @@ task :test => [ 'ios', 'mac' ].map { |x| 'test:' + x }
 
 namespace :clean do
 	desc "Clean #{PROJECTNAME}-iOS"
-	task :ios do Ios.clean end
+	task :ios do IosSim.clean end
 
 	desc "Clean #{PROJECTNAME}-mac"
 	task :mac do Mac.clean end
@@ -21,7 +21,7 @@ end
 
 namespace :analyze do
 	desc "Analyze #{PROJECTNAME}-iOS"
-	task :ios do Ios.analyze end
+	task :ios do IosSim.analyze end
 
 	desc "Analyze #{PROJECTNAME}-mac"
 	task :mac do Mac.analyze end
@@ -29,7 +29,7 @@ end
 
 namespace :test do
 	desc "Execute #{PROJECTNAME}Tests-iOS"
-	task :ios do Ios.test end
+	task :ios do IosSim.test end
 
 	desc "Execute #{PROJECTNAME}Tests-mac"
 	task :mac do Mac.test end
@@ -59,11 +59,11 @@ module BuildCommands
 	end
 end
 
-class Ios
+class IosSim
 	@BUILDARGS = [
 		'-project', "#{PROJECTNAME}.xcodeproj",
 		'-scheme', "#{PROJECTNAME}-iOS",
-		'-sdk', 'iphonesimulator6.0',
+		'-sdk', 'iphonesimulator',
 		'ONLY_ACTIVE_ARCH=NO',
 	].freeze
 
@@ -74,7 +74,7 @@ class Mac
 	@BUILDARGS = [
 		'-project', "#{PROJECTNAME}.xcodeproj",
 		'-scheme', "#{PROJECTNAME}-mac",
-		'-sdk', 'macosx10.8',
+		'-sdk', 'macosx',
 	].freeze
 
 	extend BuildCommands
