@@ -18,34 +18,34 @@ task :test => [ 'ios', 'mac' ].map { |x| 'test:' + x }
 
 namespace :clean do
 	desc "Clean #{PROJECTNAME}-iOS"
-	task :ios do IosSim.clean end
+	task :ios do IosSim.clean or fail end
 
 	desc "Clean #{PROJECTNAME}-mac"
-	task :mac do Mac.clean end
+	task :mac do Mac.clean or fail end
 end
 
 namespace :analyze do
 	desc "Analyze #{PROJECTNAME}-iOS"
-	task :ios do IosSim.analyze end
+	task :ios do IosSim.analyze or fail end
 
 	desc "Analyze #{PROJECTNAME}-mac"
-	task :mac do Mac.analyze end
+	task :mac do Mac.analyze or fail end
 end
 
 namespace :test do
 	desc "Execute #{PROJECTNAME}Tests-iOS"
-	task :ios do IosSim.test end
+	task :ios do IosSim.test or fail end
 
 	desc "Execute #{PROJECTNAME}Tests-mac"
-	task :mac do Mac.test end
+	task :mac do Mac.test or fail end
 end
 
 namespace :coveralls do
 	desc "Submit coverage data to coveralls -iOS"
-	task :ios do IosSim.coveralls end
+	task :ios do IosSim.coveralls or fail end
 
 	desc "Submit coverage data to coveralls -mac"
-	task :mac do Mac.coveralls end
+	task :mac do Mac.coveralls or fail end
 end
 
 
@@ -138,7 +138,7 @@ module BuildCommands
 				success = true
 			end
 		end
-		success
+		!success
 	end
 
 	private
