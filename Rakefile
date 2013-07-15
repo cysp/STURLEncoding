@@ -90,7 +90,7 @@ module BuildCommands
 		object_file_path = Pathname.new find_object_file_dir
 		gcfilenames = []
 		object_file_path.each_child do |c|
-			gcfilenames << c.cleanpath if c.fnmatch? '*'
+			gcfilenames << c.cleanpath if c.fnmatch? '*.gc{da,no}', File::FNM_EXTGLOB
 		end
 
 		coverage = {}
