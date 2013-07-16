@@ -53,8 +53,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 		}
 
 		if ([obj isKindOfClass:[NSArray class]]) {
-			if (!STURLQueryStringComponentsIsValidArray(obj)) {
-				isValid = NO, *stop = YES;
+			if (STURLQueryStringComponentsIsValidArray(obj)) {
 				return;
 			}
 		}
@@ -99,7 +98,9 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 
 			NSArray * const strings = STEnsureNSArray(obj);
 			if (strings) {
-				[components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
+				if ([strings count]) {
+					[components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
+				}
 				return;
 			}
 

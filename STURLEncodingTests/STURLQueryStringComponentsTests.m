@@ -71,7 +71,15 @@
 	{
 		NSDictionary * const input = @{ @"a": @[ @"a" ] };
 		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
-		STAssertNil(components, @"", nil);
+		STAssertEqualObjects([components stringsForKey:@"a"], (@[ @"a" ]), @"", nil);
+		STAssertEqualObjects([components stringForKey:@"a"], @"a", @"", nil);
+	}
+	{
+		NSDictionary * const input = @{ @"a": @[ ] };
+		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
+		STAssertNotNil(components, @"", nil);
+		STAssertNil([components stringsForKey:@"a"], @"", nil);
+		STAssertNil([components stringForKey:@"a"], @"", nil);
 	}
 	{
 		NSDictionary * const input = @{ @"a": @(1) };
