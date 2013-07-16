@@ -86,6 +86,11 @@
 		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
 		STAssertNil(components, @"", nil);
 	}
+	{
+		NSDictionary * const input = @{ @(1): @"a" };
+		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
+		STAssertNil(components, @"", nil);
+	}
 
 	{
 		NSDictionary * const input = @{ @"a": @"a" };
@@ -93,6 +98,20 @@
 		STAssertEqualObjects([components stringForKey:@"a"], @"a", @"", nil);
 		[components setString:@"b" forKey:@"a"];
 		STAssertEqualObjects([components stringForKey:@"a"], @"b", @"", nil);
+	}
+
+	{
+		NSObject * const o = [[NSObject alloc] init];
+		NSDictionary * const input = @{ @"a": o };
+		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
+		STAssertNil(components, @"", nil);
+	}
+
+	{
+		NSObject * const o = [[NSObject alloc] init];
+		NSDictionary * const input = @{ @"a": @[ o ] };
+		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
+		STAssertNil(components, @"", nil);
 	}
 }
 
