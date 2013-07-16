@@ -201,6 +201,8 @@ module BuildCommands
 
 	def stcoverage
 		object_file_path = Pathname.new find_object_file_dir
+		return {} unless object_file_path.exist?
+
 		gcfilenames = []
 		fnmatch_options = 0
 		object_file_path.each_child do |c|
