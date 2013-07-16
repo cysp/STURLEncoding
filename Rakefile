@@ -16,6 +16,9 @@ task :analyze => [ 'ios', 'mac' ].map { |x| 'analyze:' + x }
 desc "Execute #{PROJECTNAME}Tests-iOS and -mac"
 task :test => [ 'ios', 'mac' ].map { |x| 'test:' + x }
 
+desc "Calculate test coverage for #{PROJECTNAME}-iOS and -mac"
+task :coverage => [ 'ios', 'mac' ].map { |x| 'coverage:' + x }
+
 namespace :clean do
 	desc "Clean #{PROJECTNAME}-iOS"
 	task :ios do IosSim.clean or fail end
@@ -38,6 +41,14 @@ namespace :test do
 
 	desc "Execute #{PROJECTNAME}Tests-mac"
 	task :mac do Mac.test or fail end
+end
+
+namespace :coverage do
+	desc "Calculate test coverage -iOS"
+	task :ios do IosSim.coverage or fail end
+
+	desc "Calculate test coverage -iOS"
+	task :mac do Mac.coverage or fail end
 end
 
 namespace :coveralls do
@@ -71,6 +82,36 @@ module BuildCommands
 		system('xctool', *(buildargs + [ 'test', *testargs ]))
 	end
 
+	def coverage
+		cwd = Pathname.getwd
+		cwds = cwd.to_s
+
+		coverage = stcoverage
+
+		source_lines = 0
+		covered_lines = 0
+		coverage.each do |k, v|
+			next unless k.start_with? cwds
+
+			path = Pathname.new k
+			next unless path.file? && path.readable?
+
+			relpath = path.relative_path_from cwd
+
+			file_source_lines = v.count {|x| !x.nil?}
+			file_covered_lines = v.count {|x| !x.nil? && x > 0}
+			file_coverage_fraction = (file_covered_lines / file_source_lines.to_f unless file_source_lines == 0) || 0
+			puts "#{relpath.to_s}: #{(file_coverage_fraction * 100).floor}%"
+
+			source_lines += file_source_lines
+			covered_lines += file_covered_lines
+		end
+
+		coverage_fraction = (covered_lines / source_lines.to_f unless source_lines == 0) || 0
+		puts "Overall: #{(coverage_fraction * 100).floor}%"
+		0
+	end
+
 	def coveralls
 		coveralls_data = {}
 		if ENV['COVERALLS_REPO_TOKEN']
@@ -87,18 +128,7 @@ module BuildCommands
 			return 1
 		end
 
-		object_file_path = Pathname.new find_object_file_dir
-		gcfilenames = []
-		object_file_path.each_child do |c|
-			gcfilenames << c.cleanpath if c.fnmatch? '*.gc??'
-		end
-
-		coverage = {}
-		Open3.popen3('STCoverage', *(gcfilenames.map {|p| p.to_s})) do |stdin, stdout, stderr|
-			coverage_json = stdout.read
-			coverage_json.chomp!
-			coverage = JSON.parse(coverage_json) unless coverage_json.empty?
-		end
+		coverage = stcoverage
 
 		cwd = Pathname.getwd
 		cwds = cwd.to_s
@@ -167,6 +197,24 @@ module BuildCommands
 		end
 
 		accum.buildsettings
+	end
+
+	def stcoverage
+		object_file_path = Pathname.new find_object_file_dir
+		gcfilenames = []
+		fnmatch_options = 0
+		object_file_path.each_child do |c|
+			gcfilenames << c.cleanpath if c.fnmatch? '*.gc??'
+		end
+
+		coverage = {}
+		Open3.popen3('STCoverage', *(gcfilenames.map {|p| p.to_s})) do |stdin, stdout, stderr|
+			coverage_json = stdout.read
+			coverage_json.chomp!
+			coverage = JSON.parse(coverage_json) unless coverage_json.empty?
+		end
+
+		coverage
 	end
 
 	def coveralls_gitinfo
