@@ -7,6 +7,8 @@ before_install:
     - brew install xctool
     - gem install rest-client
     - curl -O -L https://github.com/cysp/STCoverage/releases/download/STCoverage-0.0.1/STCoverage && chmod +x STCoverage
+before_script:
+    - rake -s analyze
 script: rake -s test
 after_success:
     - PATH=".:$PATH" rake -s coveralls:mac
