@@ -1,0 +1,30 @@
+GIT
+  remote: https://github.com/cysp/stcoverage-ruby.git
+  revision: 316c664fa92cdeb47370306ac8b40ecdfc861426
+  branch: master
+  specs:
+    stcoverage (0.1.0)
+
+GIT
+  remote: https://github.com/cysp/stcoveralls-ruby.git
+  revision: b3c2cdd545eb5daac453fd88ef2756b9fd33e11a
+  branch: master
+  specs:
+    stcoveralls (0.1.0)
+      rest-client
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mime-types (1.23)
+    rake (10.1.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rake
+  stcoverage!
+  stcoveralls!

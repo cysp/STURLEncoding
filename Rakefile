@@ -1,9 +1,9 @@
 PROJECTNAME = 'STURLEncoding'.freeze
 
-require 'json'
 require 'open3'
 require 'pathname'
-require 'rest_client'
+require 'stcoverage'
+require 'stcoveralls'
 
 task :default => 'analyze'
 
@@ -98,10 +98,10 @@ module BuildCommands
 
 			relpath = path.relative_path_from cwd
 
-			file_source_lines = v.count {|x| !x.nil?}
-			file_covered_lines = v.count {|x| !x.nil? && x > 0}
+			file_source_lines = v.count
+			file_covered_lines = v.count {|k, v| v > 0}
 			file_coverage_fraction = (file_covered_lines / file_source_lines.to_f unless file_source_lines == 0) || 0
-			puts "#{relpath.to_s}: #{(file_coverage_fraction * 100).floor}%"
+			puts "#{relpath.to_s}: #{file_covered_lines}/#{file_source_lines} #{(file_coverage_fraction * 100).floor}%"
 
 			source_lines += file_source_lines
 			covered_lines += file_covered_lines
@@ -109,66 +109,14 @@ module BuildCommands
 
 		coverage_fraction = (covered_lines / source_lines.to_f unless source_lines == 0) || 0
 		puts "Overall: #{(coverage_fraction * 100).floor}%"
-		0
+		true
 	end
 
 	def coveralls
-		coveralls_data = {}
-		if ENV['COVERALLS_REPO_TOKEN']
-			coveralls_data[:repo_token] = ENV['COVERALLS_REPO_TOKEN']
-		elsif ENV['TRAVIS']
-			coveralls_data[:service_name] = 'travis-ci'
-			coveralls_data[:service_job_id] = ENV['TRAVIS_JOB_ID']
+		cov = stcoverage
+		Stcoveralls.coveralls do |c|
+			c.add_stcoverage_local(cov)
 		end
-
-		if !coveralls_data.fetch(:repo_token, "").empty?
-		elsif !coveralls_data.fetch(:service_name, "").empty? && !coveralls_data.fetch(:service_job_id, "").empty?
-		else
-			STDERR.puts 'Unable to determine coveralls configuration'
-			return 1
-		end
-
-		coverage = stcoverage
-
-		cwd = Pathname.getwd
-		cwds = cwd.to_s
-
-		coveralls_source_files = []
-		coverage.each do |k, v|
-			next unless k.start_with? cwds
-
-			path = Pathname.new k
-			next unless path.file? && path.readable?
-
-			relpath = path.relative_path_from cwd
-			source = path.readlines
-			sourcecoverage = v
-			sourcecoverage << nil while sourcecoverage.length < source.length
-
-			coveralls_source_file = {}
-			coveralls_source_file[:name] = relpath.to_s
-			coveralls_source_file[:source] = source.join ''
-			coveralls_source_file[:coverage] = sourcecoverage
-			coveralls_source_files << coveralls_source_file
-		end
-
-		coveralls_git = coveralls_gitinfo
-		coveralls_data[:git] = coveralls_git unless coveralls_git.empty?
-		coveralls_data[:source_files] = coveralls_source_files
-
-		coveralls_json = JSON.generate coveralls_data
-
-		json_file = JSONFileStringIO.new coveralls_json, 'r'
-		json_file.path = 'json_file'
-
-		success = false
-		RestClient.post 'https://coveralls.io/api/v1/jobs', { :json_file => json_file, :multipart => true } do |response, request, result|
-			case response.code
-			when 200
-				success = true
-			end
-		end
-		!success
 	end
 
 	private
@@ -200,52 +148,11 @@ module BuildCommands
 	end
 
 	def stcoverage
-		object_file_path = Pathname.new find_object_file_dir
+		object_file_path = Pathname.new(find_object_file_dir)
 		return {} unless object_file_path.exist?
 
-		gcfilenames = []
-		fnmatch_options = 0
-		object_file_path.each_child do |c|
-			gcfilenames << c.cleanpath if c.fnmatch? '*.gc??'
-		end
-
-		coverage = {}
-		Open3.popen3('STCoverage', *(gcfilenames.map {|p| p.to_s})) do |stdin, stdout, stderr|
-			coverage_json = stdout.read
-			coverage_json.chomp!
-			coverage = JSON.parse(coverage_json) unless coverage_json.empty?
-		end
-
-		coverage
-	end
-
-	def coveralls_gitinfo
-		gitinfo = { }
-
-		gitinfohead = { }
-		gitargs = [
-			'log',
-			'-n', '1',
-			"--format=format:%H\n%ae\n%aN\n%ce\n%cN\n%s",
-		]
-		Open3.popen3('git', *gitargs) do |stdin, stdout, stderr|
-			[ :id, :author_email, :author_name, :committer_email, :committer_name, :message ].each do |x|
-				value = stdout.gets
-				value = value.chomp unless value.nil?
-				gitinfohead[x] = value unless value.nil? or value.empty?
-			end
-		end
-		gitinfo[:head] = gitinfohead unless gitinfohead.empty?
-
-		gitbranch = nil
-		Open3.popen3('git', *[ 'rev-parse', '--abbrev-ref=strict', 'HEAD' ]) do |stdin, stdout, stderr|
-			value = stdout.gets
-			value = value.chomp unless value.nil?
-			gitbranch = value unless value.nil? or value.empty?
-		end
-		gitinfo[:branch] = gitbranch unless gitbranch.nil?
-
-		gitinfo
+		gcfilenames = object_file_path.children.map{ |c| c.cleanpath.to_s if c.fnmatch? '*.gc??' }.compact
+		Stcoverage.coverage(gcfilenames)
 	end
 end
 
@@ -330,11 +237,4 @@ class XcodeSpecificTargetBuildSettingsAccumulator
 	end
 
 	attr_reader :buildsettings
-end
-
-class JSONFileStringIO < StringIO
-	def content_type
-		'application/json'
-	end
-	attr_accessor :path
 end
