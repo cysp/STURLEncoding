@@ -9,6 +9,7 @@ GEM
     stcoverage (0.1.1)
     stcoveralls (0.1.0)
       rest-client
+    xctool (0.1.0)
 
 PLATFORMS
   ruby
@@ -17,3 +18,4 @@ DEPENDENCIES
   rake
   stcoverage
   stcoveralls
+  xctool

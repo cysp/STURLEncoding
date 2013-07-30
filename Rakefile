@@ -6,8 +6,8 @@ begin
 rescue LoadError
 end
 
-require 'open3'
 require 'pathname'
+require 'xctool'
 
 begin
   require 'stcoverage'
@@ -78,24 +78,18 @@ end
 
 module BuildCommands
   def clean
-    system('xctool', *(@BUILDARGS + [ 'clean' ]))
+    Xctool.exec(@xctool_args, 'clean')
   end
 
   def analyze
-    analyzeargs = [
-      '-failOnWarnings',
-    ]
-    system('xctool', *(@BUILDARGS + [ 'analyze', *analyzeargs ]))
+    Xctool.exec(@xctool_args, 'analyze', ['-failOnWarnings'])
   end
 
   def test
-    buildargs = @BUILDARGS + [
+    xctool_args = @xctool_args + [
       '-configuration', 'Coverage',
     ]
-    testargs = [
-      #'parallelize',
-    ]
-    system('xctool', *(buildargs + [ 'test', *testargs ]))
+    Xctool.exec(xctool_args, 'test')
   end
 
   if defined?(Stcoverage)
@@ -140,36 +134,15 @@ module BuildCommands
   end
 
   private
-  def find_object_file_dir
-    buildsettings = xcode_buildsettings
-    variant = buildsettings['CURRENT_VARIANT']
-    dir = buildsettings["OBJECT_FILE_DIR_#{variant}"] || buildsettings['OBJECT_FILE_DIR']
-    return nil if dir.nil?
-    dir << '/' + buildsettings['PLATFORM_PREFERRED_ARCH'].to_s
-  end
-
-  def xcode_buildsettings(target = nil)
-    if target.nil?
-      accum = XcodeFirstBuildableBuildSettingsAccumulator.new
-    else
-      accum = XcodeSpecificTargetBuildSettingsAccumulator.new target
-    end
-
-    buildargs = @BUILDARGS + [
-      '-configuration', 'Coverage',
-    ]
-    Open3.popen3('xctool', *(buildargs + [ '-showBuildSettings' ])) do |stdin, stdout, stderr|
-      while stdout.gets
-        accum.add_line $_.chomp
-      end
-    end
-
-    accum.buildsettings
-  end
 
   if defined?(Stcoverage)
     def stcoverage
-      object_file_path = Pathname.new(find_object_file_dir)
+      xctool_args = @xctool_args + [
+        '-configuration', 'Coverage',
+      ]
+      object_file_path = Xctool.platform_object_files_path(xctool_args)
+      return {} if object_file_path.nil?
+      object_file_path = Pathname.new(object_file_path)
       return {} unless object_file_path.exist?
 
       gcfilenames = object_file_path.children.map{ |c| c.cleanpath.to_s if c.fnmatch? '*.gc??' }.compact
@@ -179,7 +152,7 @@ module BuildCommands
 end
 
 class IosSim
-  @BUILDARGS = [
+  @xctool_args = [
     '-project', "#{PROJECTNAME}.xcodeproj",
     '-scheme', "#{PROJECTNAME}-iOS",
     '-sdk', 'iphonesimulator',
@@ -190,73 +163,11 @@ class IosSim
 end
 
 class Mac
-  @BUILDARGS = [
+  @xctool_args = [
     '-project', "#{PROJECTNAME}.xcodeproj",
     '-scheme', "#{PROJECTNAME}-mac",
     '-sdk', 'macosx',
   ].freeze
 
   extend BuildCommands
-end
-
-
-class XcodeFirstBuildableBuildSettingsAccumulator
-  def initialize
-    @have_armed = @armed = false
-    @cliregexp = /^Build settings from command line:$/
-      @regexp = /^Build settings for action build/
-      @buildsettings = { }
-  end
-
-  def add_line(line)
-    line.chomp!
-
-    if line.empty?
-      @armed = false
-    elsif @cliregexp.match line
-      @armed = true
-    elsif @have_armed
-    elsif @regexp.match line
-      @have_armed = @armed = true
-    end
-
-    return unless @armed
-
-    /\s*(\w+)\s*=\s*(.*)/.match line do |m|
-      k, v = m[1], m[2]
-      @buildsettings[k] = v
-    end
-  end
-
-  attr_reader :buildsettings
-end
-
-class XcodeSpecificTargetBuildSettingsAccumulator
-  def initialize(target)
-    @armed = false
-    @cliregexp = /^Build settings from command line:$/
-      @regexp = /^Build settings for action build and target #{Regexp.quote(target.to_s)}:$/
-      @buildsettings = { }
-  end
-
-  def add_line(line)
-    line.chomp!
-
-    if line.empty?
-      @armed = false
-    elsif @cliregexp.match line
-      @armed = true
-    elsif @regexp.match line
-      @armed = true
-    end
-
-    return unless @armed
-
-    /\s*(\w+)\s*=\s*(.*)/.match line do |m|
-      k, v = m[1], m[2]
-      @buildsettings[k] = v
-    end
-  end
-
-  attr_reader :buildsettings
 end
