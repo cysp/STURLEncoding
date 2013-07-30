@@ -1,5 +1,11 @@
 PROJECTNAME = 'STURLEncoding'.freeze
 
+begin
+  require 'bundler'
+  Bundler.require(:default, :development)
+rescue LoadError
+end
+
 require 'open3'
 require 'pathname'
 require 'stcoverage'
