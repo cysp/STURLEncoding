@@ -8,8 +8,12 @@ end
 
 require 'open3'
 require 'pathname'
-require 'stcoverage'
-require 'stcoveralls'
+
+begin
+  require 'stcoverage'
+  require 'stcoveralls'
+rescue LoadError
+end
 
 task :default => 'analyze'
 
@@ -22,8 +26,10 @@ task :analyze => [ 'ios', 'mac' ].map { |x| 'analyze:' + x }
 desc "Execute #{PROJECTNAME}Tests-iOS and -mac"
 task :test => [ 'ios', 'mac' ].map { |x| 'test:' + x }
 
-desc "Calculate test coverage for #{PROJECTNAME}-iOS and -mac"
-task :coverage => [ 'ios', 'mac' ].map { |x| 'coverage:' + x }
+if defined?(Stcoverage)
+  desc "Calculate test coverage for #{PROJECTNAME}-iOS and -mac"
+  task :coverage => [ 'ios', 'mac' ].map { |x| 'coverage:' + x }
+end
 
 namespace :clean do
   desc "Clean #{PROJECTNAME}-iOS"
@@ -49,20 +55,24 @@ namespace :test do
   task :mac do Mac.test or fail end
 end
 
-namespace :coverage do
-  desc "Calculate test coverage -iOS"
-  task :ios do IosSim.coverage or fail end
+if defined?(Stcoverage)
+  namespace :coverage do
+    desc "Calculate test coverage -iOS"
+    task :ios do IosSim.coverage or fail end
 
-  desc "Calculate test coverage -iOS"
-  task :mac do Mac.coverage or fail end
-end
+    desc "Calculate test coverage -iOS"
+    task :mac do Mac.coverage or fail end
+  end
 
-namespace :coveralls do
-  desc "Submit coverage data to coveralls -iOS"
-  task :ios do IosSim.coveralls or fail end
+  if defined?(Stcoveralls)
+    namespace :coveralls do
+      desc "Submit coverage data to coveralls -iOS"
+      task :ios do IosSim.coveralls or fail end
 
-  desc "Submit coverage data to coveralls -mac"
-  task :mac do Mac.coveralls or fail end
+      desc "Submit coverage data to coveralls -mac"
+      task :mac do Mac.coveralls or fail end
+    end
+  end
 end
 
 
@@ -88,40 +98,44 @@ module BuildCommands
     system('xctool', *(buildargs + [ 'test', *testargs ]))
   end
 
-  def coverage
-    cwd = Pathname.getwd
-    cwds = cwd.to_s
+  if defined?(Stcoverage)
+    def coverage
+      cwd = Pathname.getwd
+      cwds = cwd.to_s
 
-    coverage = stcoverage
+      coverage = stcoverage
 
-    source_lines = 0
-    covered_lines = 0
-    coverage.each do |k, v|
-      next unless k.start_with? cwds
+      source_lines = 0
+      covered_lines = 0
+      coverage.each do |k, v|
+        next unless k.start_with? cwds
 
-      path = Pathname.new k
-      next unless path.file? && path.readable?
+        path = Pathname.new k
+        next unless path.file? && path.readable?
 
-      relpath = path.relative_path_from cwd
+        relpath = path.relative_path_from cwd
 
-      file_source_lines = v.count
-      file_covered_lines = v.count {|k, v| v > 0}
-      file_coverage_fraction = (file_covered_lines / file_source_lines.to_f unless file_source_lines == 0) || 0
-      puts "#{relpath.to_s}: #{file_covered_lines}/#{file_source_lines} #{(file_coverage_fraction * 100).floor}%"
+        file_source_lines = v.count
+        file_covered_lines = v.count {|k, v| v > 0}
+        file_coverage_fraction = (file_covered_lines / file_source_lines.to_f unless file_source_lines == 0) || 0
+        puts "#{relpath.to_s}: #{file_covered_lines}/#{file_source_lines} #{(file_coverage_fraction * 100).floor}%"
 
-      source_lines += file_source_lines
-      covered_lines += file_covered_lines
+        source_lines += file_source_lines
+        covered_lines += file_covered_lines
+      end
+
+      coverage_fraction = (covered_lines / source_lines.to_f unless source_lines == 0) || 0
+      puts "Overall: #{(coverage_fraction * 100).floor}%"
+      true
     end
 
-    coverage_fraction = (covered_lines / source_lines.to_f unless source_lines == 0) || 0
-    puts "Overall: #{(coverage_fraction * 100).floor}%"
-    true
-  end
-
-  def coveralls
-    cov = stcoverage
-    Stcoveralls.coveralls do |c|
-      c.add_stcoverage_local(cov)
+    if defined?(Stcoveralls)
+      def coveralls
+        cov = stcoverage
+        Stcoveralls.coveralls do |c|
+          c.add_stcoverage_local(cov)
+        end
+      end
     end
   end
 
@@ -153,12 +167,14 @@ module BuildCommands
     accum.buildsettings
   end
 
-  def stcoverage
-    object_file_path = Pathname.new(find_object_file_dir)
-    return {} unless object_file_path.exist?
+  if defined?(Stcoverage)
+    def stcoverage
+      object_file_path = Pathname.new(find_object_file_dir)
+      return {} unless object_file_path.exist?
 
-    gcfilenames = object_file_path.children.map{ |c| c.cleanpath.to_s if c.fnmatch? '*.gc??' }.compact
-    Stcoverage.coverage(gcfilenames)
+      gcfilenames = object_file_path.children.map{ |c| c.cleanpath.to_s if c.fnmatch? '*.gc??' }.compact
+      Stcoverage.coverage(gcfilenames)
+    end
   end
 end
 
