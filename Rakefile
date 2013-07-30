@@ -20,17 +20,6 @@ task :default => 'analyze'
 desc "Clean #{PROJECTNAME}-iOS and -mac"
 task :clean => [ 'ios', 'mac' ].map { |x| 'clean:' + x }
 
-desc "Analyze #{PROJECTNAME}-iOS and -mac"
-task :analyze => [ 'ios', 'mac' ].map { |x| 'analyze:' + x }
-
-desc "Execute #{PROJECTNAME}Tests-iOS and -mac"
-task :test => [ 'ios', 'mac' ].map { |x| 'test:' + x }
-
-if defined?(Stcoverage)
-  desc "Calculate test coverage for #{PROJECTNAME}-iOS and -mac"
-  task :coverage => [ 'ios', 'mac' ].map { |x| 'coverage:' + x }
-end
-
 namespace :clean do
   desc "Clean #{PROJECTNAME}-iOS"
   task :ios do IosSim.clean or fail end
@@ -39,6 +28,9 @@ namespace :clean do
   task :mac do Mac.clean or fail end
 end
 
+desc "Analyze #{PROJECTNAME}-iOS and -mac"
+task :analyze => [ 'ios', 'mac' ].map { |x| 'analyze:' + x }
+
 namespace :analyze do
   desc "Analyze #{PROJECTNAME}-iOS"
   task :ios do IosSim.analyze or fail end
@@ -46,6 +38,9 @@ namespace :analyze do
   desc "Analyze #{PROJECTNAME}-mac"
   task :mac do Mac.analyze or fail end
 end
+
+desc "Execute #{PROJECTNAME}Tests-iOS and -mac"
+task :test => [ 'ios', 'mac' ].map { |x| 'test:' + x }
 
 namespace :test do
   desc "Execute #{PROJECTNAME}Tests-iOS"
@@ -56,6 +51,9 @@ namespace :test do
 end
 
 if defined?(Stcoverage)
+  desc "Calculate test coverage for #{PROJECTNAME}-iOS and -mac"
+  task :coverage => [ 'ios', 'mac' ].map { |x| 'coverage:' + x }
+
   namespace :coverage do
     desc "Calculate test coverage -iOS"
     task :ios do IosSim.coverage or fail end
