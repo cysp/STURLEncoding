@@ -2,7 +2,7 @@ PROJECTNAME = 'STURLEncoding'.freeze
 
 begin
   require 'bundler'
-  Bundler.require(:default, :development)
+  Bundler.configure
 rescue LoadError
 end
 
