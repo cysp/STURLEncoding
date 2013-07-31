@@ -65,7 +65,6 @@
 		2C6EE5AF163E71D30064800F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2C6EE5B9163E71D30064800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncodingTests.m; sourceTree = "<group>"; };
-		2C9C1E551711A226003E19B9 /* STURLEncoding-Coverage.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Coverage.xcconfig"; sourceTree = "<group>"; };
 		2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncoding.h; sourceTree = "<group>"; };
 		2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncoding.m; sourceTree = "<group>"; };
 		2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncodingTests.m; sourceTree = "<group>"; };
@@ -141,7 +140,6 @@
 			children = (
 				2C0EB70817096F6E0050BF86 /* STURLEncoding.xcconfig */,
 				2C0EB70B1709761B0050BF86 /* STURLEncoding-Debug.xcconfig */,
-				2C9C1E551711A226003E19B9 /* STURLEncoding-Coverage.xcconfig */,
 				2C0EB70C170976260050BF86 /* STURLEncoding-Release.xcconfig */,
 				2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */,
 				2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */,
@@ -433,47 +431,6 @@
 			};
 			name = Release;
 		};
-		2C9C1E501711A1EA003E19B9 /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C9C1E551711A226003E19B9 /* STURLEncoding-Coverage.xcconfig */;
-			buildSettings = {
-			};
-			name = Coverage;
-		};
-		2C9C1E511711A1EA003E19B9 /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
-			buildSettings = {
-			};
-			name = Coverage;
-		};
-		2C9C1E521711A1EA003E19B9 /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C0EB70917096F8A0050BF86 /* STURLEncoding-iOS.xcconfig */;
-			buildSettings = {
-				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
-				PRODUCT_NAME = STURLEncodingTests;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Coverage;
-		};
-		2C9C1E531711A1EA003E19B9 /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
-			buildSettings = {
-			};
-			name = Coverage;
-		};
-		2C9C1E541711A1EA003E19B9 /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */;
-			buildSettings = {
-				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
-				PRODUCT_NAME = STURLEncodingTests;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Coverage;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -481,7 +438,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C57660716B654D3002C6503 /* Debug */,
-				2C9C1E541711A1EA003E19B9 /* Coverage */,
 				2C57660816B654D3002C6503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -491,7 +447,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C57663A16B656A6002C6503 /* Debug */,
-				2C9C1E531711A1EA003E19B9 /* Coverage */,
 				2C57663B16B656A6002C6503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -501,7 +456,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C6EE5C0163E71D30064800F /* Debug */,
-				2C9C1E501711A1EA003E19B9 /* Coverage */,
 				2C6EE5C1163E71D30064800F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -511,7 +465,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C6EE5C3163E71D30064800F /* Debug */,
-				2C9C1E511711A1EA003E19B9 /* Coverage */,
 				2C6EE5C4163E71D30064800F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -521,7 +474,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C6EE5C6163E71D30064800F /* Debug */,
-				2C9C1E521711A1EA003E19B9 /* Coverage */,
 				2C6EE5C7163E71D30064800F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

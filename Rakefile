@@ -85,7 +85,10 @@ module BuildCommands
 
   def test
     xctool_args = @xctool_args + [
-      '-configuration', 'Coverage',
+      '-configuration', 'Debug',
+      'GCC_GENERATE_TEST_COVERAGE_FILES=YES',
+      'GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES',
+      'GENERATE_PROFILING_CODE=YES',
     ]
     Xctool.exec(xctool_args, 'test')
   end
@@ -136,7 +139,7 @@ module BuildCommands
   if defined?(Stcoverage)
     def stcoverage
       xctool_args = @xctool_args + [
-        '-configuration', 'Coverage',
+        '-configuration', 'Debug',
       ]
       object_file_path = Xctool.platform_object_files_path(xctool_args)
       return {} if object_file_path.nil?
