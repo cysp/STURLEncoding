@@ -88,7 +88,6 @@ module BuildCommands
       '-configuration', 'Debug',
       'GCC_GENERATE_TEST_COVERAGE_FILES=YES',
       'GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES',
-      'GENERATE_PROFILING_CODE=YES',
     ]
     Xctool.exec(xctool_args, 'test')
   end
