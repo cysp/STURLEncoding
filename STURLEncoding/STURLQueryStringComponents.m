@@ -216,4 +216,16 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	[_components removeObjectForKey:key];
 }
 
+- (void)setObject:(id)object forKeyedSubscript:(NSString *)key {
+    if (!object) {
+        [_components removeObjectForKey:key];
+    } else if ([object isKindOfClass:[NSString class]]) {
+        [self setString:object forKey:key];
+    } else if ([object isKindOfClass:[NSArray class]]) {
+        [self setStrings:object forKey:key];
+    } else {
+        NSAssert(0, @"invalid type");
+    }
+}
+
 @end

@@ -34,4 +34,5 @@ typedef NS_OPTIONS(NSUInteger, STURLQueryStringComponentsDictionaryRepresentatio
 - (void)addString:(NSString *)string forKey:(NSString *)key;
 - (void)setStrings:(NSArray *)strings forKey:(NSString *)key;
 - (void)removeStringsForKey:(NSString *)key;
+- (void)setObject:(id)object forKeyedSubscript:(NSString *)key;
 @end

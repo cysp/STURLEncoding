@@ -86,6 +86,21 @@
 		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
 		STAssertEqualObjects(queryString, @"aaa=A%26A&foo=b%3Fr", @"");
 	}
+    {
+        STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
+        components[@"foo"] = @[@"bar",@"baz"];
+        components[@"aaa"] = @"AAA";
+        components[@"bbb"] = @"BBB";
+        components[@"bbb"] = nil;
+		STAssertTrue([components containsKey:@"foo"], @"");
+		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		NSArray *foo = @[ @"bar", @"baz" ];
+		STAssertEqualObjects([components stringsForKey:@"foo"], foo, @"");
+        STAssertTrue([components containsKey:@"aaa"], @"");
+        STAssertFalse([components containsKey:@"bbb"], @"");
+		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
+		STAssertEqualObjects(queryString, @"aaa=AAA&foo[]=bar&foo[]=baz", @"");
+    }
 }
 
 - (void)testQueryString {
