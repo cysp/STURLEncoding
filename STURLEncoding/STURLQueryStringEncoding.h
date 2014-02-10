@@ -6,7 +6,7 @@
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
 //  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//  Copyright (c) 2012-2013 Scott Talbot. All rights reserved.
+//  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -19,6 +19,7 @@
 #pragma mark - Query String Building
 
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components;
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)comparator;
 
 
 #pragma mark - Query String Decoding

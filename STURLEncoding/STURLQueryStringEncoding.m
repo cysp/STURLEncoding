@@ -6,7 +6,7 @@
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
 //  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//  Copyright (c) 2012-2013 Scott Talbot. All rights reserved.
+//  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
 #import "STURLQueryStringEncoding.h"
@@ -19,10 +19,17 @@
 #pragma mark - Query String Building
 
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components {
+    return [self queryStringFromComponents:components keyComparator:nil];
+}
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)keyComparator {
 	NSMutableString *queryString = [NSMutableString string];
-	NSArray *keys = [[components allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *a, NSString *b) {
-		return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
-	}];
+
+	if (!keyComparator) {
+		keyComparator = [^NSComparisonResult(NSString *a, NSString *b) {
+			return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
+		} copy];
+	}
+	NSArray *keys = [[components allKeys] sortedArrayUsingComparator:keyComparator];
 	for (NSString *key in keys) {
 		NSArray *strings = [components stringsForKey:key];
 		if ([strings count] == 0) {
