@@ -2,15 +2,15 @@
 //  STURLEncodingTests.m
 //  STURLEncoding
 //
-//  Copyright (c) 2012-2013 Scott Talbot. All rights reserved.
+//  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+@import XCTest;
 
 #import "STURLEncoding.h"
 
 
-@interface STURLEncodingTests : SenTestCase
+@interface STURLEncodingTests : XCTestCase
 @end
 
 
@@ -39,26 +39,26 @@
 }
 
 - (void)testURLEncoding {
-	STAssertNotNil(_urlEncodingTable, @"");
+	XCTAssertNotNil(_urlEncodingTable, @"");
 
 	for (NSArray *testcase in _urlEncodingTable) {
 		NSString *input = testcase[0];
 		NSString *expected = testcase[1];
 		NSString *output = [STURLEncoding stringByURLEncodingString:input];
-		STAssertNotNil(output, @"error encoding");
-		STAssertEqualObjects(output, expected, @"encoding output doesn't match expected");
+		XCTAssertNotNil(output, @"error encoding");
+		XCTAssertEqualObjects(output, expected, @"encoding output doesn't match expected");
 	}
 }
 
 - (void)testURLDecoding {
-	STAssertNotNil(_urlEncodingTable, @"");
+	XCTAssertNotNil(_urlEncodingTable, @"");
 
 	for (NSArray *testcase in _urlEncodingTable) {
 		NSString *input = testcase[1];
 		NSString *expected = testcase[0];
 		NSString *output = [STURLEncoding stringByURLDecodingString:input];
-		STAssertNotNil(output, @"error decoding");
-		STAssertEqualObjects(output, expected, @"decoding output doesn't match expected");
+		XCTAssertNotNil(output, @"error decoding");
+		XCTAssertEqualObjects(output, expected, @"decoding output doesn't match expected");
 	}
 }
 

@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C6EE5AD163E71D30064800F"
-               BuildableName = "STURLEncodingTests.octest"
+               BuildableName = "STURLEncodingTests.xctest"
                BlueprintName = "STURLEncodingTests-iOS"
                ReferencedContainer = "container:STURLEncoding.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C6EE5AD163E71D30064800F"
-               BuildableName = "STURLEncodingTests.octest"
+               BuildableName = "STURLEncodingTests.xctest"
                BlueprintName = "STURLEncodingTests-iOS"
                ReferencedContainer = "container:STURLEncoding.xcodeproj">
             </BuildableReference>

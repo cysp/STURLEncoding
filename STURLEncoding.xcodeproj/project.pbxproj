@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2C5765E816B643AD002C6503 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
 		2C5765EE16B652F5002C6503 /* STURLQueryStringComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */; };
-		2C5765F516B654D3002C6503 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE5AF163E71D30064800F /* SenTestingKit.framework */; };
 		2C57660C16B6556F002C6503 /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
 		2C57660D16B6556F002C6503 /* STURLQueryStringComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */; };
 		2C57660E16B6556F002C6503 /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
@@ -17,7 +16,6 @@
 		2C57667116B6597A002C6503 /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
 		2C57667216B6597A002C6503 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
 		2C6EE5A8163E71D30064800F /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
-		2C6EE5B0163E71D30064800F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE5AF163E71D30064800F /* SenTestingKit.framework */; };
 		2C6EE5BF163E71D30064800F /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
 		2CCE16CB16B63D5900C42C7B /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
 		2CCE16CE16B63E3400C42C7B /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
@@ -30,6 +28,23 @@
 		2CD8A2DF1792E90A0095606C /* libSTURLEncoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6EE59D163E71D30064800F /* libSTURLEncoding.a */; };
 		2CD8A2E01792E90F0095606C /* libSTURLEncoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C57661416B656A6002C6503 /* libSTURLEncoding.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C218C0918A8BB07003BFDF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C6EE594163E71D30064800F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C6EE59C163E71D30064800F;
+			remoteInfo = "STURLEncoding-iOS";
+		};
+		2C218C0B18A8BB0D003BFDF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C6EE594163E71D30064800F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C57661316B656A6002C6503;
+			remoteInfo = "STURLEncoding-mac";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2C6EE59B163E71D30064800F /* CopyFiles */ = {
@@ -55,14 +70,13 @@
 		2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringComponents.h; sourceTree = "<group>"; };
 		2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponents.m; sourceTree = "<group>"; };
 		2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponentsTests.m; sourceTree = "<group>"; };
-		2C5765F416B654D3002C6503 /* STURLEncodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C5765F416B654D3002C6503 /* STURLEncodingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C57661416B656A6002C6503 /* libSTURLEncoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTURLEncoding.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C57666F16B6593B002C6503 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C6EE59D163E71D30064800F /* libSTURLEncoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTURLEncoding.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6EE5A5163E71D30064800F /* STURLEncoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STURLEncoding.h; sourceTree = "<group>"; };
 		2C6EE5A7163E71D30064800F /* STURLEncoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncoding.m; sourceTree = "<group>"; };
-		2C6EE5AE163E71D30064800F /* STURLEncodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6EE5AF163E71D30064800F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2C6EE5AE163E71D30064800F /* STURLEncodingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6EE5B9163E71D30064800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncodingTests.m; sourceTree = "<group>"; };
 		2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncoding.h; sourceTree = "<group>"; };
@@ -75,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C5765F516B654D3002C6503 /* SenTestingKit.framework in Frameworks */,
 				2CD8A2E01792E90F0095606C /* libSTURLEncoding.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +111,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6EE5B0163E71D30064800F /* SenTestingKit.framework in Frameworks */,
 				2CD8A2DF1792E90A0095606C /* libSTURLEncoding.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,9 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				2C6EE59D163E71D30064800F /* libSTURLEncoding.a */,
-				2C6EE5AE163E71D30064800F /* STURLEncodingTests.octest */,
+				2C6EE5AE163E71D30064800F /* STURLEncodingTests.xctest */,
 				2C57661416B656A6002C6503 /* libSTURLEncoding.a */,
-				2C5765F416B654D3002C6503 /* STURLEncodingTests.octest */,
+				2C5765F416B654D3002C6503 /* STURLEncodingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,7 +142,6 @@
 		2C6EE59F163E71D30064800F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C6EE5AF163E71D30064800F /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -192,11 +203,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				2C218C0C18A8BB0D003BFDF9 /* PBXTargetDependency */,
 			);
 			name = "STURLEncodingTests-mac";
 			productName = "STURLEncodingTests-mac";
-			productReference = 2C5765F416B654D3002C6503 /* STURLEncodingTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 2C5765F416B654D3002C6503 /* STURLEncodingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		2C57661316B656A6002C6503 /* STURLEncoding-mac */ = {
 			isa = PBXNativeTarget;
@@ -244,11 +256,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				2C218C0A18A8BB07003BFDF9 /* PBXTargetDependency */,
 			);
 			name = "STURLEncodingTests-iOS";
 			productName = STURLEncodingTests;
-			productReference = 2C6EE5AE163E71D30064800F /* STURLEncodingTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 2C6EE5AE163E71D30064800F /* STURLEncodingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -258,6 +271,14 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Scott Talbot";
+				TargetAttributes = {
+					2C5765F316B654D3002C6503 = {
+						TestTargetID = 2C57661316B656A6002C6503;
+					};
+					2C6EE5AD163E71D30064800F = {
+						TestTargetID = 2C6EE59C163E71D30064800F;
+					};
+				};
 			};
 			buildConfigurationList = 2C6EE597163E71D30064800F /* Build configuration list for PBXProject "STURLEncoding" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -346,6 +367,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2C218C0A18A8BB07003BFDF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C6EE59C163E71D30064800F /* STURLEncoding-iOS */;
+			targetProxy = 2C218C0918A8BB07003BFDF9 /* PBXContainerItemProxy */;
+		};
+		2C218C0C18A8BB0D003BFDF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C57661316B656A6002C6503 /* STURLEncoding-mac */;
+			targetProxy = 2C218C0B18A8BB0D003BFDF9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		2C57660716B654D3002C6503 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -353,7 +387,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -363,7 +396,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -417,7 +449,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -427,7 +458,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

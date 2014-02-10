@@ -2,16 +2,16 @@
 //  STURLQueryStringComponentsTests.m
 //  STURLEncoding
 //
-//  Copyright (c) 2013 Scott Talbot. All rights reserved.
+//  Copyright (c) 2013-2014 Scott Talbot. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+@import XCTest;
 
 #import "STURLQueryStringComponents.h"
 #import "STURLQueryStringEncoding.h"
 
 
-@interface STURLQueryStringComponentsTests : SenTestCase
+@interface STURLQueryStringComponentsTests : XCTestCase
 @end
 
 
@@ -22,19 +22,19 @@
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 
 		[components setString:nil forKey:@"a"];
-		STAssertFalse([components containsKey:@"a"], @"", nil);
+		XCTAssertFalse([components containsKey:@"a"], @"");
 
 		[components setString:@"" forKey:@"a"];
-		STAssertTrue([components containsKey:@"a"], @"", nil);
+		XCTAssertTrue([components containsKey:@"a"], @"");
 
 		[components removeStringsForKey:@"a"];
-		STAssertFalse([components containsKey:@"a"], @"", nil);
+		XCTAssertFalse([components containsKey:@"a"], @"");
 	}
 
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 		[components addString:nil forKey:@"a"];
-		STAssertFalse([components containsKey:@"a"], @"", nil);
+		XCTAssertFalse([components containsKey:@"a"], @"");
 	}
 }
 
@@ -43,22 +43,22 @@
 		STMutableURLQueryStringComponents *a = [STMutableURLQueryStringComponents components];
 
 		[a setString:@"a" forKey:@"a"];
-		STAssertTrue([a containsKey:@"a"], @"", nil);
-		STAssertEqualObjects([a stringForKey:@"a"], @"a", @"", nil);
-		STAssertEqualObjects([a stringsForKey:@"a"], (@[ @"a" ]), @"", nil);
+		XCTAssertTrue([a containsKey:@"a"], @"");
+		XCTAssertEqualObjects([a stringForKey:@"a"], @"a", @"");
+		XCTAssertEqualObjects([a stringsForKey:@"a"], (@[ @"a" ]), @"");
 
 		STURLQueryStringComponents *b = [a copy];
-		STAssertTrue([b containsKey:@"a"], @"", nil);
-		STAssertEqualObjects([b stringForKey:@"a"], @"a", @"", nil);
-		STAssertEqualObjects([b stringsForKey:@"a"], (@[ @"a" ]), @"", nil);
+		XCTAssertTrue([b containsKey:@"a"], @"");
+		XCTAssertEqualObjects([b stringForKey:@"a"], @"a", @"");
+		XCTAssertEqualObjects([b stringsForKey:@"a"], (@[ @"a" ]), @"");
 
 		STMutableURLQueryStringComponents *c = [b mutableCopy];
-		STAssertTrue([c containsKey:@"a"], @"", nil);
-		STAssertEqualObjects([c stringForKey:@"a"], @"a", @"", nil);
-		STAssertEqualObjects([c stringsForKey:@"a"], (@[ @"a" ]), @"", nil);
+		XCTAssertTrue([c containsKey:@"a"], @"");
+		XCTAssertEqualObjects([c stringForKey:@"a"], @"a", @"");
+		XCTAssertEqualObjects([c stringsForKey:@"a"], (@[ @"a" ]), @"");
 
 		[c removeStringsForKey:@"a"];
-		STAssertFalse([c containsKey:@"a"], @"", nil);
+		XCTAssertFalse([c containsKey:@"a"], @"");
 	}
 }
 
@@ -66,52 +66,52 @@
 	{
 		NSDictionary * const input = @{ @"a": @"a" };
 		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
-		STAssertEqualObjects([components stringForKey:@"a"], @"a", @"", nil);
+		XCTAssertEqualObjects([components stringForKey:@"a"], @"a", @"");
 	}
 	{
 		NSDictionary * const input = @{ @"a": @[ @"a" ] };
 		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
-		STAssertEqualObjects([components stringsForKey:@"a"], (@[ @"a" ]), @"", nil);
-		STAssertEqualObjects([components stringForKey:@"a"], @"a", @"", nil);
+		XCTAssertEqualObjects([components stringsForKey:@"a"], (@[ @"a" ]), @"");
+		XCTAssertEqualObjects([components stringForKey:@"a"], @"a", @"");
 	}
 	{
 		NSDictionary * const input = @{ @"a": @[ ] };
 		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
-		STAssertNotNil(components, @"", nil);
-		STAssertNil([components stringsForKey:@"a"], @"", nil);
-		STAssertNil([components stringForKey:@"a"], @"", nil);
+		XCTAssertNotNil(components, @"");
+		XCTAssertNil([components stringsForKey:@"a"], @"");
+		XCTAssertNil([components stringForKey:@"a"], @"");
 	}
 	{
 		NSDictionary * const input = @{ @"a": @(1) };
 		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
-		STAssertNil(components, @"", nil);
+		XCTAssertNil(components, @"");
 	}
 	{
 		NSDictionary * const input = @{ @(1): @"a" };
 		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
-		STAssertNil(components, @"", nil);
+		XCTAssertNil(components, @"");
 	}
 
 	{
 		NSDictionary * const input = @{ @"a": @"a" };
 		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
-		STAssertEqualObjects([components stringForKey:@"a"], @"a", @"", nil);
+		XCTAssertEqualObjects([components stringForKey:@"a"], @"a", @"");
 		[components setString:@"b" forKey:@"a"];
-		STAssertEqualObjects([components stringForKey:@"a"], @"b", @"", nil);
+		XCTAssertEqualObjects([components stringForKey:@"a"], @"b", @"");
 	}
 
 	{
 		NSObject * const o = [[NSObject alloc] init];
 		NSDictionary * const input = @{ @"a": o };
 		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
-		STAssertNil(components, @"", nil);
+		XCTAssertNil(components, @"");
 	}
 
 	{
 		NSObject * const o = [[NSObject alloc] init];
 		NSDictionary * const input = @{ @"a": @[ o ] };
 		STMutableURLQueryStringComponents * const components = [STMutableURLQueryStringComponents componentsWithDictionary:input];
-		STAssertNil(components, @"", nil);
+		XCTAssertNil(components, @"");
 	}
 }
 
@@ -121,7 +121,7 @@
         NSDictionary * const input = @{ @"a": @"a" };
         STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
         NSDictionary * const output = [components dictionaryRepresentation];
-        STAssertEqualObjects(input, output, @"");
+        XCTAssertEqualObjects(input, output, @"");
     }
     {
         // Test array comes back as array
@@ -129,23 +129,23 @@
         NSArray * const expected = @[@"a",@"b"];
         STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
         NSDictionary * const output = [components dictionaryRepresentation];
-        STAssertEquals([output count], (NSUInteger)1, @"");
-        STAssertEqualObjects(output[@"a"], expected, @"");
+        XCTAssertEqual([output count], (NSUInteger)1, @"");
+        XCTAssertEqualObjects(output[@"a"], expected, @"");
     }
     {
         // Test array comes back as only the first element if the STURLQueryStringComponentsDictionaryRepresentationDiscardDuplicates flag is set
         NSString * const input = @"a=a&a=b";
         STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
         NSDictionary * const output = [components dictionaryRepresentationWithOptions:STURLQueryStringComponentsDictionaryRepresentationUseFirstValue];
-        STAssertEquals([output count], (NSUInteger)1, @"");
-        STAssertEqualObjects(output[@"a"], @"a", @"");
+        XCTAssertEqual([output count], (NSUInteger)1, @"");
+        XCTAssertEqualObjects(output[@"a"], @"a", @"");
     }
     {
         NSString * const input = @"a=a&b=";
         NSDictionary * const expected = @{@"a":@"a",@"b":@""};
         STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
         NSDictionary * const output = [components dictionaryRepresentation];
-        STAssertEqualObjects(output, expected, @"");
+        XCTAssertEqualObjects(output, expected, @"");
     }
     {
         // Test more interesting dictionary
@@ -156,7 +156,7 @@
                                         @"e":@"ethan" };
         STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
         NSDictionary * const output = [components dictionaryRepresentation];
-        STAssertEqualObjects(input, output, @"");
+        XCTAssertEqualObjects(input, output, @"");
     }
 }
 

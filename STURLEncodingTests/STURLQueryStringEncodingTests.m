@@ -2,15 +2,15 @@
 //  STURLQueryStringEncodingTests.m
 //  STURLEncoding
 //
-//  Copyright (c) 2012-2013 Scott Talbot. All rights reserved.
+//  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+@import XCTest;
 
 #import "STURLQueryStringEncoding.h"
 
 
-@interface STURLQueryStringEncodingTests : SenTestCase
+@interface STURLQueryStringEncodingTests : XCTestCase
 @end
 
 
@@ -21,30 +21,30 @@
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 
 		[components setString:nil forKey:@"a"];
-		STAssertFalse([components containsKey:@"a"], @"", nil);
+		XCTAssertFalse([components containsKey:@"a"], @"");
 		{
 			NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-			STAssertEqualObjects(queryString, @"", @"");
+			XCTAssertEqualObjects(queryString, @"", @"");
 		}
 
 		[components setString:@"" forKey:@"a"];
-		STAssertTrue([components containsKey:@"a"], @"", nil);
+		XCTAssertTrue([components containsKey:@"a"], @"");
 		{
 			NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-			STAssertEqualObjects(queryString, @"a=", @"");
+			XCTAssertEqualObjects(queryString, @"a=", @"");
 		}
 
 		[components removeStringsForKey:@"a"];
-		STAssertFalse([components containsKey:@"a"], @"", nil);
+		XCTAssertFalse([components containsKey:@"a"], @"");
 		{
 			NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-			STAssertEqualObjects(queryString, @"", @"");
+			XCTAssertEqualObjects(queryString, @"", @"");
 		}
 	}
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 		[components addString:nil forKey:@"a"];
-		STAssertFalse([components containsKey:@"a"], @"", nil);
+		XCTAssertFalse([components containsKey:@"a"], @"");
 	}
 }
 
@@ -52,39 +52,39 @@
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 		[components setString:@"bar" forKey:@"foo"];
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
 		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-		STAssertEqualObjects(queryString, @"foo=bar", @"");
+		XCTAssertEqualObjects(queryString, @"foo=bar", @"");
 	}
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 		[components setString:@"bar" forKey:@"foo"];
 		[components addString:@"baz" forKey:@"foo"];
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
 		NSArray *foo = @[ @"bar", @"baz" ];
-		STAssertEqualObjects([components stringsForKey:@"foo"], foo, @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], foo, @"");
 		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-		STAssertEqualObjects(queryString, @"foo[]=bar&foo[]=baz", @"");
+		XCTAssertEqualObjects(queryString, @"foo[]=bar&foo[]=baz", @"");
 	}
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 		[components setString:@"bar" forKey:@"foo"];
 		[components setString:@"AAA" forKey:@"aaa"];
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
 		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-		STAssertEqualObjects(queryString, @"aaa=AAA&foo=bar", @"");
+		XCTAssertEqualObjects(queryString, @"aaa=AAA&foo=bar", @"");
 	}
 	{
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 		[components setString:@"b?r" forKey:@"foo"];
 		[components setString:@"A&A" forKey:@"aaa"];
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"b?r", @"");
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"b?r", @"");
 		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-		STAssertEqualObjects(queryString, @"aaa=A%26A&foo=b%3Fr", @"");
+		XCTAssertEqualObjects(queryString, @"aaa=A%26A&foo=b%3Fr", @"");
 	}
     {
         STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
@@ -92,220 +92,220 @@
         components[@"aaa"] = @"AAA";
         components[@"bbb"] = @"BBB";
         components[@"bbb"] = nil;
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"bar", @"");
 		NSArray *foo = @[ @"bar", @"baz" ];
-		STAssertEqualObjects([components stringsForKey:@"foo"], foo, @"");
-        STAssertTrue([components containsKey:@"aaa"], @"");
-        STAssertFalse([components containsKey:@"bbb"], @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], foo, @"");
+        XCTAssertTrue([components containsKey:@"aaa"], @"");
+        XCTAssertFalse([components containsKey:@"bbb"], @"");
 		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
-		STAssertEqualObjects(queryString, @"aaa=AAA&foo[]=bar&foo[]=baz", @"");
+		XCTAssertEqualObjects(queryString, @"aaa=AAA&foo[]=bar&foo[]=baz", @"");
     }
 }
 
 - (void)testQueryString {
 	{
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo"];
-		STAssertNotNil(components, @"error decoding query string");
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertFalse([components containsKey:@"bar"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string");
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertFalse([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertFalse([components containsKey:@"bar"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertFalse([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertFalse([components containsKey:@"bar"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
-		STAssertEqualObjects(components[@"foo"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertFalse([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
+		XCTAssertEqualObjects(components[@"foo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo&bar" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
-		STAssertEqualObjects([components stringForKey:@"bar"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
+		XCTAssertEqualObjects([components stringForKey:@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=baz&bar" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects(components[@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects([components stringForKey:@"bar"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects(components[@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=baz&bar=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects(components[@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects(components[@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=baz&;&bar=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects(components[@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects(components[@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=baz&bar=&" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects(components[@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects(components[@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"baz", @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], @[ @"baz" ], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=baz&bar=quux" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertEqualObjects(components[@"foo"], @"baz", @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"quux", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertEqualObjects(components[@"foo"], @"baz", @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"quux", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo&bar=quuux" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"quuux", @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"quuux", @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo&bar=qu%20uux" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"qu uux", @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"f%26oo&bar=qu%20uux" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"f&oo"], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
-		STAssertEqualObjects([components stringForKey:@"f&oo"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"f&oo"], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"qu uux", @"");
+		XCTAssertEqualObjects([components stringForKey:@"f&oo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"f%26oo;bar=qu%20uux" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"f&oo"], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
-		STAssertEqualObjects([components stringForKey:@"f&oo"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"f&oo"], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects(components[@"bar"], @"qu uux", @"");
+		XCTAssertEqualObjects([components stringForKey:@"f&oo"], @"", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"f+oo;bar=qu%20uux" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"f oo"], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects([components stringForKey:@"f oo"], @"", @"");
-		STAssertEqualObjects(components[@"bar"], @"qu uux", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"f oo"], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"f oo"], @"", @"");
+		XCTAssertEqualObjects(components[@"bar"], @"qu uux", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"f+oo;bar=qu%20u+ux" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"f oo"], @"");
-		STAssertTrue([components containsKey:@"bar"], @"");
-		STAssertEqualObjects([components stringForKey:@"f oo"], @"", @"");
-		STAssertEqualObjects(components[@"bar"], @"qu u ux", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"f oo"], @"");
+		XCTAssertTrue([components containsKey:@"bar"], @"");
+		XCTAssertEqualObjects([components stringForKey:@"f oo"], @"", @"");
+		XCTAssertEqualObjects(components[@"bar"], @"qu u ux", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=qu%20uux&foo=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
 		NSArray *expected = @[ @"qu uux", @"" ];
-		STAssertEqualObjects(components[@"foo"], expected, @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
-		STAssertEqualObjects([components stringForKey:@"foo"], @"qu uux", @"");
+		XCTAssertEqualObjects(components[@"foo"], expected, @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+		XCTAssertEqualObjects([components stringForKey:@"foo"], @"qu uux", @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo[]=;foo[]=qu%20uux&foo[]=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
 		NSArray *expected = @[ @"", @"qu uux", @"" ];
-		STAssertEqualObjects(components[@"foo"], expected, @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+		XCTAssertEqualObjects(components[@"foo"], expected, @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"fo/o[]=;foo[]=qu%20uux&foo[]=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertTrue([components containsKey:@"fo/o"], @"");
-		STAssertEqualObjects(components[@"fo/o"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertTrue([components containsKey:@"fo/o"], @"");
+		XCTAssertEqualObjects(components[@"fo/o"], @"", @"");
 		{
 			NSArray *expected = @[ @"qu uux", @"" ];
-			STAssertEqualObjects(components[@"foo"], expected, @"");
-			STAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+			XCTAssertEqualObjects(components[@"foo"], expected, @"");
+			XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
 		}
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo[]=;foo[]=qu%20u/ux&foo[]=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
 		NSArray *expected = @[ @"", @"qu u/ux", @"" ];
-		STAssertEqualObjects(components[@"foo"], expected, @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+		XCTAssertEqualObjects(components[@"foo"], expected, @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"fo?o[]=;foo[]=qu%20uux&foo[]=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
-		STAssertTrue([components containsKey:@"fo?o"], @"");
-		STAssertEqualObjects(components[@"fo?o"], @"", @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertTrue([components containsKey:@"fo?o"], @"");
+		XCTAssertEqualObjects(components[@"fo?o"], @"", @"");
 		{
 			NSArray *expected = @[ @"qu uux", @"" ];
-			STAssertEqualObjects(components[@"foo"], expected, @"");
-			STAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+			XCTAssertEqualObjects(components[@"foo"], expected, @"");
+			XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
 		}
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo[]=;foo[]=qu%20u?ux&foo[]=" error:&error];
-		STAssertNotNil(components, @"error decoding query string: %@", error);
-		STAssertTrue([components containsKey:@"foo"], @"");
+		XCTAssertNotNil(components, @"error decoding query string: %@", error);
+		XCTAssertTrue([components containsKey:@"foo"], @"");
 		NSArray *expected = @[ @"", @"qu u?ux", @"" ];
-		STAssertEqualObjects(components[@"foo"], expected, @"");
-		STAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+		XCTAssertEqualObjects(components[@"foo"], expected, @"");
+		XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
 	}
 }
 
@@ -313,31 +313,31 @@
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"" error:&error];
-		STAssertNotNil(components, @"", error);
+		XCTAssertNotNil(components, @"%@", error);
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"=" error:&error];
-		STAssertNil(components, @"", error);
-		STAssertNotNil(error, @"", nil);
+		XCTAssertNil(components, @"%@", error);
+		XCTAssertNotNil(error, @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"&=" error:&error];
-		STAssertNil(components, @"", error);
-		STAssertNotNil(error, @"", nil);
+		XCTAssertNil(components, @"%@", error);
+		XCTAssertNotNil(error, @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"a=%" error:&error];
-		STAssertNil(components, @"", error);
-		STAssertNotNil(error, @"", nil);
+		XCTAssertNil(components, @"%@", error);
+		XCTAssertNotNil(error, @"");
 	}
 	{
 		NSError *error = nil;
 		STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"a%=%" error:&error];
-		STAssertNil(components, @"", error);
-		STAssertNotNil(error, @"", nil);
+		XCTAssertNil(components, @"%@", error);
+		XCTAssertNotNil(error, @"");
 	}
 }
 
