@@ -67,8 +67,10 @@
 		XCTAssertEqualObjects([components stringsForKey:@"foo"], foo, @"");
 		NSString *queryString = [STURLQueryStringEncoding queryStringFromComponents:components];
 		XCTAssertEqualObjects(queryString, @"foo[]=bar&foo[]=baz", @"");
+        NSString *queryStringWithBareDuplicateKeys = [STURLQueryStringEncoding queryStringFromComponents:components options:STURLQueryStringEncodingOptionsBareDuplicateKeys];
+        XCTAssertEqualObjects(queryStringWithBareDuplicateKeys, @"foo=bar&foo=baz", @"");
 	}
-	{
+    {
 		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
 		[components setString:@"bar" forKey:@"foo"];
 		[components setString:@"AAA" forKey:@"aaa"];
@@ -307,6 +309,24 @@
 		XCTAssertEqualObjects(components[@"foo"], expected, @"");
 		XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
 	}
+    {
+        NSError *error = nil;
+        STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo[]=a;foo[]=b" error:&error];
+        XCTAssertNotNil(components, @"error decoding query string: %@", error);
+        XCTAssertTrue([components containsKey:@"foo"], @"");
+        NSArray *expected = @[ @"a", @"b" ];
+        XCTAssertEqualObjects(components[@"foo"], expected, @"");
+        XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+    }
+    {
+        NSError *error = nil;
+        STURLQueryStringComponents *components = [STURLQueryStringEncoding componentsFromQueryString:@"foo=a;foo=b" error:&error];
+        XCTAssertNotNil(components, @"error decoding query string: %@", error);
+        XCTAssertTrue([components containsKey:@"foo"], @"");
+        NSArray *expected = @[ @"a", @"b" ];
+        XCTAssertEqualObjects(components[@"foo"], expected, @"");
+        XCTAssertEqualObjects([components stringsForKey:@"foo"], expected, @"");
+    }
 }
 
 - (void)testQueryStringDecodingFailures {

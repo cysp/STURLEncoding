@@ -14,12 +14,19 @@
 #import <STURLEncoding/STURLQueryStringComponents.h>
 
 
+typedef NS_OPTIONS(NSUInteger, STURLQueryStringEncodingOptions) {
+    STURLQueryStringEncodingOptionsBareDuplicateKeys = (1UL << 0),
+};
+
+
 @interface STURLQueryStringEncoding : NSObject { }
 
 #pragma mark - Query String Building
 
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components;
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)comparator;
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)keyComparator;
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options;
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options keyComparator:(NSComparator)keyComparator;
 
 
 #pragma mark - Query String Decoding

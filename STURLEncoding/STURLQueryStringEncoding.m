@@ -19,9 +19,15 @@
 #pragma mark - Query String Building
 
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components {
-    return [self queryStringFromComponents:components keyComparator:nil];
+	return [self queryStringFromComponents:components options:0 keyComparator:nil];
 }
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)keyComparator {
+	return [self queryStringFromComponents:components options:0 keyComparator:keyComparator];
+}
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options {
+	return [self queryStringFromComponents:components options:options keyComparator:nil];
+}
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options keyComparator:(NSComparator)keyComparator {
 	NSMutableString *queryString = [NSMutableString string];
 
 	if (!keyComparator) {
@@ -41,11 +47,15 @@
 			}
 			[queryString appendFormat:@"%@=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:[strings lastObject]]];
 		} else {
+			NSString *serializedKey = [STURLEncoding stringByURLEncodingString:key];
+			if ((options & STURLQueryStringEncodingOptionsBareDuplicateKeys) == 0) {
+				serializedKey = [serializedKey stringByAppendingString:@"[]"];
+			}
 			for (NSString *string in strings) {
 				if ([queryString length]) {
 					[queryString appendString:@"&"];
 				}
-				[queryString appendFormat:@"%@[]=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:string]];
+				[queryString appendFormat:@"%@=%@", serializedKey, [STURLEncoding stringByURLEncodingString:string]];
 			}
 		}
 	}
