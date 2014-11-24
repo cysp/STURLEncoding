@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "STURLQueryStringComponents.h"
+#import <STURLEncoding/STURLQueryStringComponents.h>
 
 
 @interface STURLQueryStringEncoding : NSObject { }

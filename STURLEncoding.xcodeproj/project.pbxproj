@@ -17,6 +17,26 @@
 		2C57667216B6597A002C6503 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
 		2C6EE5A8163E71D30064800F /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
 		2C6EE5BF163E71D30064800F /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
+		2C9EC6961A233539008C3452 /* STURLEncoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9EC68B1A233539008C3452 /* STURLEncoding.framework */; };
+		2C9EC6A41A233618008C3452 /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
+		2C9EC6A51A233618008C3452 /* STURLQueryStringComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */; };
+		2C9EC6A61A233618008C3452 /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
+		2C9EC6A71A233621008C3452 /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
+		2C9EC6A81A233621008C3452 /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
+		2C9EC6A91A233621008C3452 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
+		2C9EC6AA1A23362A008C3452 /* STURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6EE5A5163E71D30064800F /* STURLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C9EC6AB1A23362A008C3452 /* STURLQueryStringEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C9EC6AC1A23362A008C3452 /* STURLQueryStringComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C9EC6BD1A23376F008C3452 /* STURLEncoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9EC6B21A23376E008C3452 /* STURLEncoding.framework */; };
+		2C9EC6CB1A2337BF008C3452 /* STURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5A7163E71D30064800F /* STURLEncoding.m */; };
+		2C9EC6CC1A2337BF008C3452 /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
+		2C9EC6CD1A2337BF008C3452 /* STURLQueryStringComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */; };
+		2C9EC6CE1A2337C3008C3452 /* STURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6EE5A5163E71D30064800F /* STURLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C9EC6CF1A2337C3008C3452 /* STURLQueryStringEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C9EC6D01A2337C3008C3452 /* STURLQueryStringComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C9EC6D11A23380F008C3452 /* STURLEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */; };
+		2C9EC6D21A23380F008C3452 /* STURLQueryStringComponentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */; };
+		2C9EC6D31A23380F008C3452 /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
 		2CCE16CB16B63D5900C42C7B /* STURLQueryStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */; };
 		2CCE16CE16B63E3400C42C7B /* STURLQueryStringEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */; };
 		2CCF4825174723F500BBE8A2 /* STURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6EE5A5163E71D30064800F /* STURLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +63,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2C57661316B656A6002C6503;
 			remoteInfo = "STURLEncoding-mac";
+		};
+		2C9EC6971A233539008C3452 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C6EE594163E71D30064800F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C9EC68A1A233539008C3452;
+			remoteInfo = "STURLEncodingFramework-iOS";
+		};
+		2C9EC6BE1A23376F008C3452 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C6EE594163E71D30064800F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C9EC6B11A23376E008C3452;
+			remoteInfo = "STURLEncodingFramework-mac";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -79,6 +113,10 @@
 		2C6EE5AE163E71D30064800F /* STURLEncodingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STURLEncodingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6EE5B9163E71D30064800F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C6EE5BE163E71D30064800F /* STURLEncodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STURLEncodingTests.m; sourceTree = "<group>"; };
+		2C9EC68B1A233539008C3452 /* STURLEncoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STURLEncoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C9EC6951A233539008C3452 /* STURLEncodingFrameworkTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "STURLEncodingFrameworkTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C9EC6B21A23376E008C3452 /* STURLEncoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STURLEncoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C9EC6BC1A23376E008C3452 /* STURLEncodingFrameworkTests-mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "STURLEncodingFrameworkTests-mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CCE16C916B63D5900C42C7B /* STURLQueryStringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringEncoding.h; sourceTree = "<group>"; };
 		2CCE16CA16B63D5900C42C7B /* STURLQueryStringEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncoding.m; sourceTree = "<group>"; };
 		2CCE16CD16B63E3400C42C7B /* STURLQueryStringEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringEncodingTests.m; sourceTree = "<group>"; };
@@ -115,6 +153,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C9EC6871A233539008C3452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6921A233539008C3452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6961A233539008C3452 /* STURLEncoding.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6AE1A23376E008C3452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6B91A23376E008C3452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6BD1A23376F008C3452 /* STURLEncoding.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -135,6 +203,10 @@
 				2C6EE5AE163E71D30064800F /* STURLEncodingTests.xctest */,
 				2C57661416B656A6002C6503 /* libSTURLEncoding.a */,
 				2C5765F416B654D3002C6503 /* STURLEncodingTests.xctest */,
+				2C9EC68B1A233539008C3452 /* STURLEncoding.framework */,
+				2C9EC6951A233539008C3452 /* STURLEncodingFrameworkTests-iOS.xctest */,
+				2C9EC6B21A23376E008C3452 /* STURLEncoding.framework */,
+				2C9EC6BC1A23376E008C3452 /* STURLEncodingFrameworkTests-mac.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +258,26 @@
 				2CCF4825174723F500BBE8A2 /* STURLEncoding.h in Headers */,
 				2CCF4826174723F500BBE8A2 /* STURLQueryStringEncoding.h in Headers */,
 				2CCF4827174723F500BBE8A2 /* STURLQueryStringComponents.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6881A233539008C3452 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6AB1A23362A008C3452 /* STURLQueryStringEncoding.h in Headers */,
+				2C9EC6AC1A23362A008C3452 /* STURLQueryStringComponents.h in Headers */,
+				2C9EC6AA1A23362A008C3452 /* STURLEncoding.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6AF1A23376E008C3452 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6CE1A2337C3008C3452 /* STURLEncoding.h in Headers */,
+				2C9EC6CF1A2337C3008C3452 /* STURLQueryStringEncoding.h in Headers */,
+				2C9EC6D01A2337C3008C3452 /* STURLQueryStringComponents.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,13 +355,85 @@
 			productReference = 2C6EE5AE163E71D30064800F /* STURLEncodingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2C9EC68A1A233539008C3452 /* STURLEncodingFramework-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C9EC6A21A233539008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFramework-iOS" */;
+			buildPhases = (
+				2C9EC6861A233539008C3452 /* Sources */,
+				2C9EC6871A233539008C3452 /* Frameworks */,
+				2C9EC6881A233539008C3452 /* Headers */,
+				2C9EC6891A233539008C3452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "STURLEncodingFramework-iOS";
+			productName = "STURLEncodingFramework-iOS";
+			productReference = 2C9EC68B1A233539008C3452 /* STURLEncoding.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2C9EC6941A233539008C3452 /* STURLEncodingFrameworkTests-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C9EC6A31A233539008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFrameworkTests-iOS" */;
+			buildPhases = (
+				2C9EC6911A233539008C3452 /* Sources */,
+				2C9EC6921A233539008C3452 /* Frameworks */,
+				2C9EC6931A233539008C3452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C9EC6981A233539008C3452 /* PBXTargetDependency */,
+			);
+			name = "STURLEncodingFrameworkTests-iOS";
+			productName = "STURLEncodingFramework-iOSTests";
+			productReference = 2C9EC6951A233539008C3452 /* STURLEncodingFrameworkTests-iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2C9EC6B11A23376E008C3452 /* STURLEncodingFramework-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C9EC6C91A23376F008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFramework-mac" */;
+			buildPhases = (
+				2C9EC6AD1A23376E008C3452 /* Sources */,
+				2C9EC6AE1A23376E008C3452 /* Frameworks */,
+				2C9EC6AF1A23376E008C3452 /* Headers */,
+				2C9EC6B01A23376E008C3452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "STURLEncodingFramework-mac";
+			productName = "STURLEncodingFramework-mac";
+			productReference = 2C9EC6B21A23376E008C3452 /* STURLEncoding.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2C9EC6BB1A23376E008C3452 /* STURLEncodingFrameworkTests-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C9EC6CA1A23376F008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFrameworkTests-mac" */;
+			buildPhases = (
+				2C9EC6B81A23376E008C3452 /* Sources */,
+				2C9EC6B91A23376E008C3452 /* Frameworks */,
+				2C9EC6BA1A23376E008C3452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C9EC6BF1A23376F008C3452 /* PBXTargetDependency */,
+			);
+			name = "STURLEncodingFrameworkTests-mac";
+			productName = "STURLEncodingFramework-macTests";
+			productReference = 2C9EC6BC1A23376E008C3452 /* STURLEncodingFrameworkTests-mac.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2C6EE594163E71D30064800F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Scott Talbot";
 				TargetAttributes = {
 					2C5765F316B654D3002C6503 = {
@@ -277,6 +441,18 @@
 					};
 					2C6EE5AD163E71D30064800F = {
 						TestTargetID = 2C6EE59C163E71D30064800F;
+					};
+					2C9EC68A1A233539008C3452 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					2C9EC6941A233539008C3452 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					2C9EC6B11A23376E008C3452 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					2C9EC6BB1A23376E008C3452 = {
+						CreatedOnToolsVersion = 6.2;
 					};
 				};
 			};
@@ -296,6 +472,10 @@
 				2C6EE5AD163E71D30064800F /* STURLEncodingTests-iOS */,
 				2C57661316B656A6002C6503 /* STURLEncoding-mac */,
 				2C5765F316B654D3002C6503 /* STURLEncodingTests-mac */,
+				2C9EC68A1A233539008C3452 /* STURLEncodingFramework-iOS */,
+				2C9EC6941A233539008C3452 /* STURLEncodingFrameworkTests-iOS */,
+				2C9EC6B11A23376E008C3452 /* STURLEncodingFramework-mac */,
+				2C9EC6BB1A23376E008C3452 /* STURLEncodingFrameworkTests-mac */,
 			);
 		};
 /* End PBXProject section */
@@ -316,6 +496,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2C6EE5AB163E71D30064800F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6891A233539008C3452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6931A233539008C3452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6B01A23376E008C3452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6BA1A23376E008C3452 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -365,6 +573,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C9EC6861A233539008C3452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6A71A233621008C3452 /* STURLEncoding.m in Sources */,
+				2C9EC6A81A233621008C3452 /* STURLQueryStringEncoding.m in Sources */,
+				2C9EC6A91A233621008C3452 /* STURLQueryStringComponents.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6911A233539008C3452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6A51A233618008C3452 /* STURLQueryStringComponentsTests.m in Sources */,
+				2C9EC6A41A233618008C3452 /* STURLEncodingTests.m in Sources */,
+				2C9EC6A61A233618008C3452 /* STURLQueryStringEncodingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6AD1A23376E008C3452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6CB1A2337BF008C3452 /* STURLEncoding.m in Sources */,
+				2C9EC6CC1A2337BF008C3452 /* STURLQueryStringEncoding.m in Sources */,
+				2C9EC6CD1A2337BF008C3452 /* STURLQueryStringComponents.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9EC6B81A23376E008C3452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9EC6D21A23380F008C3452 /* STURLQueryStringComponentsTests.m in Sources */,
+				2C9EC6D11A23380F008C3452 /* STURLEncodingTests.m in Sources */,
+				2C9EC6D31A23380F008C3452 /* STURLQueryStringEncodingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -377,6 +625,16 @@
 			isa = PBXTargetDependency;
 			target = 2C57661316B656A6002C6503 /* STURLEncoding-mac */;
 			targetProxy = 2C218C0B18A8BB0D003BFDF9 /* PBXContainerItemProxy */;
+		};
+		2C9EC6981A233539008C3452 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C9EC68A1A233539008C3452 /* STURLEncodingFramework-iOS */;
+			targetProxy = 2C9EC6971A233539008C3452 /* PBXContainerItemProxy */;
+		};
+		2C9EC6BF1A23376F008C3452 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C9EC6B11A23376E008C3452 /* STURLEncodingFramework-mac */;
+			targetProxy = 2C9EC6BE1A23376F008C3452 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -461,6 +719,253 @@
 			};
 			name = Release;
 		};
+		2C9EC69E1A233539008C3452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C9EC69F1A233539008C3452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C9EC6A01A233539008C3452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2C9EC6A11A233539008C3452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C9EC6C51A23376F008C3452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2C9EC6C61A23376F008C3452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2C9EC6C71A23376F008C3452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2C9EC6C81A23376F008C3452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,6 +1013,40 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2C9EC6A21A233539008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFramework-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C9EC69E1A233539008C3452 /* Debug */,
+				2C9EC69F1A233539008C3452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C9EC6A31A233539008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFrameworkTests-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C9EC6A01A233539008C3452 /* Debug */,
+				2C9EC6A11A233539008C3452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C9EC6C91A23376F008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFramework-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C9EC6C51A23376F008C3452 /* Debug */,
+				2C9EC6C61A23376F008C3452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C9EC6CA1A23376F008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFrameworkTests-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C9EC6C71A23376F008C3452 /* Debug */,
+				2C9EC6C81A23376F008C3452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
