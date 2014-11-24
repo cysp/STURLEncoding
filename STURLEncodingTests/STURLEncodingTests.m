@@ -19,6 +19,7 @@
 }
 
 - (void)setUp {
+    NSString * const eightzero = [[NSString alloc] initWithCharacters:(unichar[]){ 0x80 } length:1];
 	_urlEncodingTable = @[
 		@[ @"", @"" ],
 		@[ @"abcABC123", @"abcABC123" ],
@@ -29,7 +30,7 @@
 		@[ @"\n", @"%0A" ],
 		@[ @" ", @"%20", ],
 		@[ @"\x7f", @"%7F" ],
-//		@[ @"\x80", @"%C2%80" ], // disabled due to NSString input validation
+		@[ eightzero, @"%C2%80" ],
 		@[ @"\u3001", @"%E3%80%81" ],
 	];
 }
