@@ -101,6 +101,7 @@
 		2C0EB70A17096F950050BF86 /* STURLEncoding-mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-mac.xcconfig"; sourceTree = "<group>"; };
 		2C0EB70B1709761B0050BF86 /* STURLEncoding-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Debug.xcconfig"; sourceTree = "<group>"; };
 		2C0EB70C170976260050BF86 /* STURLEncoding-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "STURLEncoding-Release.xcconfig"; sourceTree = "<group>"; };
+		2C1C92871CCF848E00BE393A /* STURLEncoding.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = STURLEncoding.playground; sourceTree = SOURCE_ROOT; };
 		2C5765E616B643AD002C6503 /* STURLQueryStringComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STURLQueryStringComponents.h; sourceTree = "<group>"; };
 		2C5765E716B643AD002C6503 /* STURLQueryStringComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponents.m; sourceTree = "<group>"; };
 		2C5765ED16B652F5002C6503 /* STURLQueryStringComponentsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STURLQueryStringComponentsTests.m; sourceTree = "<group>"; };
@@ -189,6 +190,7 @@
 		2C6EE592163E71D30064800F = {
 			isa = PBXGroup;
 			children = (
+				2C1C92871CCF848E00BE393A /* STURLEncoding.playground */,
 				2C6EE5A2163E71D30064800F /* STURLEncoding */,
 				2C6EE5B7163E71D30064800F /* STURLEncodingTests */,
 				2C6EE59F163E71D30064800F /* Frameworks */,
