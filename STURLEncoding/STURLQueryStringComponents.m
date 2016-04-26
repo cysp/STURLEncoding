@@ -9,7 +9,11 @@
 //  Copyright (c) 2012-2014 Scott Talbot.
 //
 
-#import "STURLQueryStringComponents.h"
+#import <Foundation/Foundation.h>
+#import <STURLEncoding/STURLQueryStringComponents.h>
+
+
+NSString * const STURLQueryStringComponentsErrorDomain = @"STURLQueryStringComponents";
 
 
 static NSString *STEnsureNSString(id<NSObject> obj) {
@@ -70,18 +74,21 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 }
 
 + (instancetype)components {
-	return [[self alloc] initWithDictionary:nil];
+    return [(STURLQueryStringComponents *)[self alloc] initWithDictionary:nil error:NULL];
 }
 
 + (instancetype)componentsWithDictionary:(NSDictionary *)dict {
-	return [[self alloc] initWithDictionary:dict];
+    return [[self alloc] initWithDictionary:dict error:NULL];
 }
 
-- (id)init {
-	return [self initWithDictionary:nil];
+- (instancetype)init {
+    return [self initWithDictionary:nil error:NULL];
 }
-- (id)initWithDictionary:(NSDictionary *)dict {
+- (instancetype)initWithDictionary:(NSDictionary *)dict error:(NSError * __autoreleasing *)error {
 	if (!STURLQueryStringComponentsIsValidDictionary(dict)) {
+        if (error) {
+            *error = [NSError errorWithDomain:STURLQueryStringComponentsErrorDomain code:STURLQueryStringComponentsErrorCodeUnknown userInfo:nil];
+        }
 		return nil;
 	}
 

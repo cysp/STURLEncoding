@@ -1039,6 +1039,7 @@
 				2C9EC6C61A23376F008C3452 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C9EC6CA1A23376F008C3452 /* Build configuration list for PBXNativeTarget "STURLEncodingFrameworkTests-mac" */ = {
 			isa = XCConfigurationList;
@@ -1047,6 +1048,7 @@
 				2C9EC6C81A23376F008C3452 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

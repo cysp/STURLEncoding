@@ -10,21 +10,24 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <STURLEncoding/STURLQueryStringComponents.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 
 @interface STURLQueryStringEncoding : NSObject { }
 
 #pragma mark - Query String Building
 
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components;
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)comparator;
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components NS_SWIFT_NAME(queryString(components:));
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)comparator NS_SWIFT_NAME(queryString(components:keyComparator:));
 
 
 #pragma mark - Query String Decoding
 
-+ (STURLQueryStringComponents *)componentsFromQueryString:(NSString *)string;
-+ (STURLQueryStringComponents *)componentsFromQueryString:(NSString *)string error:(NSError * __autoreleasing *)error;
++ (STURLQueryStringComponents * __nullable)componentsFromQueryString:(NSString *)string NS_SWIFT_UNAVAILABLE("");
++ (STURLQueryStringComponents * __nullable)componentsFromQueryString:(NSString *)string error:(NSError * __nullable __autoreleasing * __nullable)error NS_SWIFT_NAME(components(string:));
 
 @end
+
+NS_ASSUME_NONNULL_END

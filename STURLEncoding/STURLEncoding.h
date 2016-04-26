@@ -11,12 +11,14 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 
 FOUNDATION_EXPORT double STURLEncodingVersionNumber;
 FOUNDATION_EXPORT const unsigned char STURLEncodingVersionString[];
 
 
-extern NSString * const kSTURLEncodingErrorDomain;
+extern NSString * const STURLEncodingErrorDomain;
 typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 	STURLEncodingErrorCodeUnknown = 0,
 };
@@ -26,14 +28,17 @@ typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 
 #pragma mark - URLEncoding
 
-+ (NSString *)stringByURLEncodingString:(NSString *)string;
++ (NSString *)stringByURLEncodingString:(NSString *)string NS_SWIFT_NAME(encode(string:));
 
 
 #pragma mark - URLDecoding
 
-+ (NSString *)stringByURLDecodingString:(NSString *)string;
++ (NSString *)stringByURLDecodingString:(NSString *)string NS_SWIFT_NAME(decode(string:));
 
 @end
+
+
+NS_ASSUME_NONNULL_END
 
 
 #import <STURLEncoding/STURLQueryStringEncoding.h>

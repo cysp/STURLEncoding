@@ -9,10 +9,10 @@
 //  Copyright (c) 2012-2014 Scott Talbot.
 //
 
-#import "STURLEncoding.h"
+#import <STURLEncoding/STURLEncoding.h>
 
 
-NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
+NSString * const STURLEncodingErrorDomain = @"STURLEncoding";
 
 
 @implementation STURLEncoding {

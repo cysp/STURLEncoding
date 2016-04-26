@@ -9,8 +9,8 @@
 //  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
 //
 
-#import "STURLQueryStringEncoding.h"
-#import "STURLEncoding.h"
+#import <STURLEncoding/STURLEncoding.h>
+#import <STURLEncoding/STURLQueryStringEncoding.h>
 
 
 @implementation STURLQueryStringEncoding {
@@ -19,15 +19,17 @@
 #pragma mark - Query String Building
 
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components {
-    return [self queryStringFromComponents:components keyComparator:nil];
+    return [self queryStringFromComponents:components keyComparator:^NSComparisonResult(NSString *a, NSString *b) {
+        return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
+    }];
 }
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)keyComparator {
 	NSMutableString *queryString = [NSMutableString string];
 
 	if (!keyComparator) {
-		keyComparator = [^NSComparisonResult(NSString *a, NSString *b) {
+		keyComparator = ^NSComparisonResult(NSString *a, NSString *b) {
 			return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
-		} copy];
+		};
 	}
 	NSArray *keys = [[components allKeys] sortedArrayUsingComparator:keyComparator];
 	for (NSString *key in keys) {
@@ -72,7 +74,7 @@
 		NSString *key = nil, *value = @"";
 		if (![scanner scanUpToCharactersFromSet:separatorsOrEqualsCharacterSet intoString:&key]) {
 			if (error) {
-				*error = [NSError errorWithDomain:kSTURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
+				*error = [NSError errorWithDomain:STURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
 			}
 			return nil;
 		}
@@ -86,7 +88,7 @@
 		NSString *decodedKey = [STURLEncoding stringByURLDecodingString:key];
 		if ([key length] && ![decodedKey length]) {
 			if (error) {
-				*error = [NSError errorWithDomain:kSTURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
+				*error = [NSError errorWithDomain:STURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
 			}
 			return nil;
 		}
@@ -94,7 +96,7 @@
 		NSString *decodedValue = [STURLEncoding stringByURLDecodingString:value];
 		if ([value length] && ![decodedValue length]) {
 			if (error) {
-				*error = [NSError errorWithDomain:kSTURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
+				*error = [NSError errorWithDomain:STURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
 			}
 			return nil;
 		}
