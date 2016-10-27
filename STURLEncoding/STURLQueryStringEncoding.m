@@ -28,7 +28,10 @@
 
 	if (!keyComparator) {
 		keyComparator = [^NSComparisonResult(NSString *a, NSString *b) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
 			return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
+#pragma clang diagnostic pop
 		} copy];
 	}
 	NSArray<NSString *> *keys = [components.allKeys sortedArrayUsingComparator:keyComparator];
@@ -41,7 +44,8 @@
 			if (queryString.length) {
 				[queryString appendString:@"&"];
 			}
-			[queryString appendFormat:@"%@=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:strings.lastObject]];
+			NSString * const string = strings.lastObject;
+			[queryString appendFormat:@"%@=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:string]];
 		} else {
 			NSString *serializedKey = [STURLEncoding stringByURLEncodingString:key];
 			if ((options & STURLQueryStringEncodingOptionsBareDuplicateKeys) == 0) {

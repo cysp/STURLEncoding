@@ -646,6 +646,10 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Debug;
 		};
@@ -655,6 +659,10 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Release;
 		};
@@ -708,6 +716,10 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Debug;
 		};
@@ -717,6 +729,10 @@
 			buildSettings = {
 				INFOPLIST_FILE = STURLEncodingTests/Info.plist;
 				PRODUCT_NAME = STURLEncodingTests;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Release;
 		};
@@ -802,6 +818,10 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Debug;
 		};
@@ -844,6 +864,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Release;
 		};
@@ -925,6 +949,10 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Debug;
 		};
@@ -968,6 +996,10 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-partial-availability",
+				);
 			};
 			name = Release;
 		};
