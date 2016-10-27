@@ -12,7 +12,7 @@
 
 
 typedef NS_OPTIONS(NSUInteger, STURLQueryStringEncodingOptions) {
-    STURLQueryStringEncodingOptionsBareDuplicateKeys = (1UL << 0),
+	STURLQueryStringEncodingOptionsBareDuplicateKeys = (1UL << 0),
 };
 
 

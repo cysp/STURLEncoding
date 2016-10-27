@@ -195,6 +195,7 @@
 				2C6EE59E163E71D30064800F /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		2C6EE59E163E71D30064800F /* Products */ = {
 			isa = PBXGroup;

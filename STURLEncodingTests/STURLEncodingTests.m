@@ -19,7 +19,7 @@
 }
 
 - (void)setUp {
-    NSString * const eightzero = [[NSString alloc] initWithCharacters:(unichar[]){ 0x80 } length:1];
+	NSString * const eightzero = [[NSString alloc] initWithCharacters:(unichar[]){ 0x80 } length:1];
 	_urlEncodingTable = @[
 		@[ @"", @"" ],
 		@[ @"abcABC123", @"abcABC123" ],

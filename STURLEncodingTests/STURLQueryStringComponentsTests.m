@@ -110,48 +110,48 @@
 }
 
 - (void)testDictionaryRepresentation {
-    {
-        // Test basic case
-        NSDictionary * const input = @{ @"a": @"a" };
-        STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
-        NSDictionary * const output = [components dictionaryRepresentation];
-        XCTAssertEqualObjects(input, output, @"");
-    }
-    {
-        // Test array comes back as array
-        NSString * const input = @"a=a&a=b";
-        NSArray * const expected = @[@"a",@"b"];
-        STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
-        NSDictionary * const output = [components dictionaryRepresentation];
-        XCTAssertEqual([output count], (NSUInteger)1, @"");
-        XCTAssertEqualObjects(output[@"a"], expected, @"");
-    }
-    {
-        // Test array comes back as only the first element if the STURLQueryStringComponentsDictionaryRepresentationDiscardDuplicates flag is set
-        NSString * const input = @"a=a&a=b";
-        STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
-        NSDictionary * const output = [components dictionaryRepresentationWithOptions:STURLQueryStringComponentsDictionaryRepresentationUseFirstValue];
-        XCTAssertEqual([output count], (NSUInteger)1, @"");
-        XCTAssertEqualObjects(output[@"a"], @"a", @"");
-    }
-    {
-        NSString * const input = @"a=a&b=";
-        NSDictionary * const expected = @{@"a":@"a",@"b":@""};
-        STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
-        NSDictionary * const output = [components dictionaryRepresentation];
-        XCTAssertEqualObjects(output, expected, @"");
-    }
-    {
-        // Test more interesting dictionary
-        NSDictionary * const input = @{ @"a":@"alex",
-                                        @"b":@"bruce",
-                                        @"c":@"cailin",
-                                        @"d":@"dave",
-                                        @"e":@"ethan" };
-        STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
-        NSDictionary * const output = [components dictionaryRepresentation];
-        XCTAssertEqualObjects(input, output, @"");
-    }
+	{
+		// Test basic case
+		NSDictionary * const input = @{ @"a": @"a" };
+		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
+		NSDictionary * const output = [components dictionaryRepresentation];
+		XCTAssertEqualObjects(input, output, @"");
+	}
+	{
+		// Test array comes back as array
+		NSString * const input = @"a=a&a=b";
+		NSArray * const expected = @[@"a",@"b"];
+		STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
+		NSDictionary * const output = [components dictionaryRepresentation];
+		XCTAssertEqual([output count], (NSUInteger)1, @"");
+		XCTAssertEqualObjects(output[@"a"], expected, @"");
+	}
+	{
+		// Test array comes back as only the first element if the STURLQueryStringComponentsDictionaryRepresentationDiscardDuplicates flag is set
+		NSString * const input = @"a=a&a=b";
+		STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
+		NSDictionary * const output = [components dictionaryRepresentationWithOptions:STURLQueryStringComponentsDictionaryRepresentationUseFirstValue];
+		XCTAssertEqual([output count], (NSUInteger)1, @"");
+		XCTAssertEqualObjects(output[@"a"], @"a", @"");
+	}
+	{
+		NSString * const input = @"a=a&b=";
+		NSDictionary * const expected = @{@"a":@"a",@"b":@""};
+		STURLQueryStringComponents * const components = [STURLQueryStringEncoding componentsFromQueryString:input];
+		NSDictionary * const output = [components dictionaryRepresentation];
+		XCTAssertEqualObjects(output, expected, @"");
+	}
+	{
+		// Test more interesting dictionary
+		NSDictionary * const input = @{ @"a":@"alex",
+										@"b":@"bruce",
+										@"c":@"cailin",
+										@"d":@"dave",
+										@"e":@"ethan" };
+		STURLQueryStringComponents * const components = [STURLQueryStringComponents componentsWithDictionary:input];
+		NSDictionary * const output = [components dictionaryRepresentation];
+		XCTAssertEqualObjects(input, output, @"");
+	}
 }
 
 @end

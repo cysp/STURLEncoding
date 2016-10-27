@@ -20,10 +20,10 @@ NSString * const kSTURLEncodingErrorDomain = @"STURLEncoding";
 
 + (NSString *)stringByURLEncodingString:(NSString *)string {
 	NSString *encoded = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
-	    (__bridge CFStringRef)string,
-	    CFSTR("-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~"),
-	    CFSTR("!#$&'()*+,/:;=?@[]"),
-	    kCFStringEncodingUTF8);
+		(__bridge CFStringRef)string,
+		CFSTR("-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~"),
+		CFSTR("!#$&'()*+,/:;=?@[]"),
+		kCFStringEncodingUTF8);
 	return encoded;
 }
 

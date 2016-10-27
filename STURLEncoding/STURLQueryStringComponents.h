@@ -10,7 +10,7 @@
 
 
 typedef NS_OPTIONS(NSUInteger, STURLQueryStringComponentsDictionaryRepresentationOptions) {
-    STURLQueryStringComponentsDictionaryRepresentationUseFirstValue = (1UL << 0),
+	STURLQueryStringComponentsDictionaryRepresentationUseFirstValue = (1UL << 0),
 };
 
 
