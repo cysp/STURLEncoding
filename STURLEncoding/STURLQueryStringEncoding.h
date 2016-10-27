@@ -24,15 +24,15 @@ typedef NSComparisonResult(^STURLQueryStringEncodingKeyComparator)(NSString * __
 
 #pragma mark - Query String Building
 
-+ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components;
-+ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components keyComparator:(STURLQueryStringEncodingKeyComparator __nullable)keyComparator;
-+ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components options:(STURLQueryStringEncodingOptions)options;
++ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components NS_SWIFT_UNAVAILABLE("");
++ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components keyComparator:(STURLQueryStringEncodingKeyComparator __nullable)keyComparator NS_SWIFT_UNAVAILABLE("");
++ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components options:(STURLQueryStringEncodingOptions)options NS_SWIFT_UNAVAILABLE("");
 + (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components options:(STURLQueryStringEncodingOptions)options keyComparator:(STURLQueryStringEncodingKeyComparator __nullable)keyComparator;
 
 
 #pragma mark - Query String Decoding
 
-+ (STURLQueryStringComponents * __nullable)componentsFromQueryString:(NSString * __nonnull)string;
++ (STURLQueryStringComponents * __nullable)componentsFromQueryString:(NSString * __nonnull)string NS_SWIFT_UNAVAILABLE("");
 + (STURLQueryStringComponents * __nullable)componentsFromQueryString:(NSString * __nonnull)string error:(NSError * __nullable __autoreleasing * __nullable)error;
 
 @end

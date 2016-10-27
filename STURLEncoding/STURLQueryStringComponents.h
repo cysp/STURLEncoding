@@ -29,9 +29,9 @@ typedef NS_OPTIONS(NSUInteger, STURLQueryStringComponentsDictionaryRepresentatio
 @end
 
 @interface STMutableURLQueryStringComponents : STURLQueryStringComponents
-- (void)setString:(NSString * __nullable)string forKey:(NSString * __nonnull)key;
+- (void)setString:(NSString * __nullable)string forKey:(NSString * __nonnull)key NS_SWIFT_NAME(set(_:forKey:));
 - (void)addString:(NSString * __nonnull)string forKey:(NSString * __nonnull)key;
-- (void)setStrings:(NSArray<NSString *> * __nullable)strings forKey:(NSString * __nonnull)key;
+- (void)setStrings:(NSArray<NSString *> * __nullable)strings forKey:(NSString * __nonnull)key NS_SWIFT_NAME(set(_:forKey:));
 - (void)removeStringsForKey:(NSString * __nonnull)key;
 - (void)setObject:(id __nullable)object forKeyedSubscript:(NSString * __nonnull)key;
 @end

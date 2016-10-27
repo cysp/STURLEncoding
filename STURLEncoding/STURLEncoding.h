@@ -23,12 +23,12 @@ typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 
 #pragma mark - URLEncoding
 
-+ (NSString * __nonnull)stringByURLEncodingString:(NSString * __nonnull)string;
++ (NSString * __nonnull)stringByURLEncodingString:(NSString * __nonnull)string NS_SWIFT_NAME(encode(_:));
 
 
 #pragma mark - URLDecoding
 
-+ (NSString * __nullable)stringByURLDecodingString:(NSString * __nonnull)string;
++ (NSString * __nullable)stringByURLDecodingString:(NSString * __nonnull)string NS_SWIFT_NAME(decode(_:));
 
 @end
 
