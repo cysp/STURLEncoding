@@ -75,7 +75,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 }
 
 - (instancetype)init {
-	return [self initWithDictionary:nil];
+    return [self initWithDictionary:@{}];
 }
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
 	if (!STURLQueryStringComponentsIsValidDictionary(dict)) {

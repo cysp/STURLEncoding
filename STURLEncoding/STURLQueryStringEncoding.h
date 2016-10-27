@@ -16,19 +16,22 @@ typedef NS_OPTIONS(NSUInteger, STURLQueryStringEncodingOptions) {
 };
 
 
+typedef NSComparisonResult(^STURLQueryStringEncodingKeyComparator)(NSString * __nonnull a, NSString * __nonnull b);
+
+
 @interface STURLQueryStringEncoding : NSObject
 
 #pragma mark - Query String Building
 
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components;
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)keyComparator;
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options;
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options keyComparator:(NSComparator)keyComparator;
++ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components;
++ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components keyComparator:(STURLQueryStringEncodingKeyComparator __nullable)keyComparator;
++ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components options:(STURLQueryStringEncodingOptions)options;
++ (NSString * __nonnull)queryStringFromComponents:(STURLQueryStringComponents * __nonnull)components options:(STURLQueryStringEncodingOptions)options keyComparator:(STURLQueryStringEncodingKeyComparator __nullable)keyComparator;
 
 
 #pragma mark - Query String Decoding
 
-+ (STURLQueryStringComponents *)componentsFromQueryString:(NSString *)string;
-+ (STURLQueryStringComponents *)componentsFromQueryString:(NSString *)string error:(NSError * __autoreleasing *)error;
++ (STURLQueryStringComponents * __nullable)componentsFromQueryString:(NSString * __nonnull)string;
++ (STURLQueryStringComponents * __nullable)componentsFromQueryString:(NSString * __nonnull)string error:(NSError * __nullable __autoreleasing * __nullable)error;
 
 @end

@@ -17,13 +17,13 @@
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components {
 	return [self queryStringFromComponents:components options:0 keyComparator:nil];
 }
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(NSComparator)keyComparator {
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components keyComparator:(STURLQueryStringEncodingKeyComparator)keyComparator {
 	return [self queryStringFromComponents:components options:0 keyComparator:keyComparator];
 }
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options {
 	return [self queryStringFromComponents:components options:options keyComparator:nil];
 }
-+ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options keyComparator:(NSComparator)keyComparator {
++ (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options keyComparator:(STURLQueryStringEncodingKeyComparator)keyComparator {
 	NSMutableString *queryString = NSMutableString.string;
 
 	if (!keyComparator) {
@@ -31,9 +31,9 @@
 			return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
 		} copy];
 	}
-	NSArray *keys = [components.allKeys sortedArrayUsingComparator:keyComparator];
+	NSArray<NSString *> *keys = [components.allKeys sortedArrayUsingComparator:keyComparator];
 	for (NSString *key in keys) {
-		NSArray *strings = [components stringsForKey:key];
+		NSArray<NSString *> *strings = [components stringsForKey:key];
 		if (strings.count == 0) {
 			continue;
 		}

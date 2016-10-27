@@ -15,21 +15,22 @@ typedef NS_OPTIONS(NSUInteger, STURLQueryStringComponentsDictionaryRepresentatio
 
 
 @interface STURLQueryStringComponents : NSObject<NSCopying,NSMutableCopying>
-+ (instancetype)components;
-+ (instancetype)componentsWithDictionary:(NSDictionary *)dict;
-@property (nonatomic,copy,readonly) NSArray *allKeys;
-- (BOOL)containsKey:(NSString *)key;
-- (NSString *)stringForKey:(NSString *)key;
-- (NSArray *)stringsForKey:(NSString *)key;
-- (id)objectForKeyedSubscript:(NSString *)key;
-- (NSDictionary *)dictionaryRepresentation;
-- (NSDictionary *)dictionaryRepresentationWithOptions:(STURLQueryStringComponentsDictionaryRepresentationOptions)options;
++ (instancetype __nonnull)components;
++ (instancetype __nullable)componentsWithDictionary:(NSDictionary<NSString *, id> * __nonnull)dict;
+- (instancetype __nullable)initWithDictionary:(NSDictionary<NSString *, id> * __nonnull)dict NS_DESIGNATED_INITIALIZER;
+@property (nonatomic,copy,nonnull,readonly) NSArray<NSString *> *allKeys;
+- (BOOL)containsKey:(NSString * __nonnull)key;
+- (NSString * __nullable)stringForKey:(NSString * __nonnull)key;
+- (NSArray<NSString *> * __nullable)stringsForKey:(NSString * __nonnull)key;
+- (id __nullable)objectForKeyedSubscript:(NSString * __nonnull)key;
+- (NSDictionary<NSString *, id> * __nonnull)dictionaryRepresentation;
+- (NSDictionary<NSString *, id> * __nonnull)dictionaryRepresentationWithOptions:(STURLQueryStringComponentsDictionaryRepresentationOptions)options;
 @end
 
 @interface STMutableURLQueryStringComponents : STURLQueryStringComponents
-- (void)setString:(NSString *)string forKey:(NSString *)key;
-- (void)addString:(NSString *)string forKey:(NSString *)key;
-- (void)setStrings:(NSArray *)strings forKey:(NSString *)key;
-- (void)removeStringsForKey:(NSString *)key;
-- (void)setObject:(id)object forKeyedSubscript:(NSString *)key;
+- (void)setString:(NSString * __nullable)string forKey:(NSString * __nonnull)key;
+- (void)addString:(NSString * __nonnull)string forKey:(NSString * __nonnull)key;
+- (void)setStrings:(NSArray<NSString *> * __nullable)strings forKey:(NSString * __nonnull)key;
+- (void)removeStringsForKey:(NSString * __nonnull)key;
+- (void)setObject:(id __nullable)object forKeyedSubscript:(NSString * __nonnull)key;
 @end

@@ -30,12 +30,6 @@
 		[components removeStringsForKey:@"a"];
 		XCTAssertFalse([components containsKey:@"a"], @"");
 	}
-
-	{
-		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
-		[components addString:nil forKey:@"a"];
-		XCTAssertFalse([components containsKey:@"a"], @"");
-	}
 }
 
 - (void)testMutableCopy {

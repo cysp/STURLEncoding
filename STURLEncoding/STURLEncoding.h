@@ -13,7 +13,7 @@ FOUNDATION_EXPORT double STURLEncodingVersionNumber;
 FOUNDATION_EXPORT const unsigned char STURLEncodingVersionString[];
 
 
-extern NSString * const kSTURLEncodingErrorDomain;
+extern NSString * __nonnull const kSTURLEncodingErrorDomain;
 typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 	STURLEncodingErrorCodeUnknown = 0,
 };
@@ -23,12 +23,12 @@ typedef NS_ENUM(NSUInteger, STURLEncodingErrorCode) {
 
 #pragma mark - URLEncoding
 
-+ (NSString *)stringByURLEncodingString:(NSString *)string;
++ (NSString * __nonnull)stringByURLEncodingString:(NSString * __nonnull)string;
 
 
 #pragma mark - URLDecoding
 
-+ (NSString *)stringByURLDecodingString:(NSString *)string;
++ (NSString * __nullable)stringByURLDecodingString:(NSString * __nonnull)string;
 
 @end
 

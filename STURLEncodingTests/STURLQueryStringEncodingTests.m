@@ -41,11 +41,6 @@
 			XCTAssertEqualObjects(queryString, @"", @"");
 		}
 	}
-	{
-		STMutableURLQueryStringComponents *components = [STMutableURLQueryStringComponents components];
-		[components addString:nil forKey:@"a"];
-		XCTAssertFalse([components containsKey:@"a"], @"");
-	}
 }
 
 - (void)testQueryStringBuilding {
