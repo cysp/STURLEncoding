@@ -1,26 +1,23 @@
 //
-//  STURLQueryStringComponents.m
-//  STURLEncoding
-//
 //  This Source Code Form is subject to the terms of the Mozilla Public
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
 //  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//  Copyright (c) 2012-2014 Scott Talbot.
+//  Copyright (c) 2012-2016 Scott Talbot.
 //
 
-#import "STURLQueryStringComponents.h"
+#import <STURLEncoding/STURLQueryStringComponents.h>
 
 
 static NSString *STEnsureNSString(id<NSObject> obj) {
-	if ([obj isKindOfClass:[NSString class]]) {
+	if ([obj isKindOfClass:NSString.class]) {
 		return (NSString *)obj;
 	}
 	return nil;
 }
 
 static NSArray *STEnsureNSArray(id<NSObject> obj) {
-	if ([obj isKindOfClass:[NSArray class]]) {
+	if ([obj isKindOfClass:NSArray.class]) {
 		return (NSArray *)obj;
 	}
 	return nil;
@@ -28,7 +25,7 @@ static NSArray *STEnsureNSArray(id<NSObject> obj) {
 
 static BOOL STURLQueryStringComponentsIsValidArray(NSArray *array) {
 	for (id obj in array) {
-		if ([obj isKindOfClass:[NSString class]]) {
+		if ([obj isKindOfClass:NSString.class]) {
 			continue;
 		}
 
@@ -42,16 +39,16 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	__block BOOL isValid = YES;
 
 	[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-		if (![key isKindOfClass:[NSString class]]) {
+		if (![key isKindOfClass:NSString.class]) {
 			isValid = NO, *stop = YES;
 			return;
 		}
 
-		if ([obj isKindOfClass:[NSString class]]) {
+		if ([obj isKindOfClass:NSString.class]) {
 			return;
 		}
 
-		if ([obj isKindOfClass:[NSArray class]]) {
+		if ([obj isKindOfClass:NSArray.class]) {
 			if (STURLQueryStringComponentsIsValidArray(obj)) {
 				return;
 			}
@@ -65,7 +62,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 
 
 @implementation STURLQueryStringComponents {
-	@package
+@package
 	NSMutableDictionary *_components;
 }
 
@@ -77,10 +74,10 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	return [[self alloc] initWithDictionary:dict];
 }
 
-- (id)init {
+- (instancetype)init {
 	return [self initWithDictionary:nil];
 }
-- (id)initWithDictionary:(NSDictionary *)dict {
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
 	if (!STURLQueryStringComponentsIsValidDictionary(dict)) {
 		return nil;
 	}
@@ -91,14 +88,14 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 		[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop __unused) {
 			NSString * const string = STEnsureNSString(obj);
 			if (string) {
-				[components setObject:[[NSMutableArray alloc] initWithObjects:[string copy], nil] forKey:key];
+				components[key] = [[NSMutableArray alloc] initWithObjects:string.copy, nil];
 				return;
 			}
 
 			NSArray * const strings = STEnsureNSArray(obj);
 			if (strings) {
-				if ([strings count]) {
-					[components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
+				if (strings.count) {
+					components[key] = [[NSMutableArray alloc] initWithArray:strings copyItems:YES];
 				}
 				return;
 			}
@@ -113,7 +110,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	STURLQueryStringComponents *other = [[STURLQueryStringComponents allocWithZone:zone] init];
 	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop __unused) {
 		NSMutableArray *otherStrings = [[NSMutableArray allocWithZone:zone] initWithArray:obj copyItems:YES];
-		[other->_components setObject:otherStrings forKey:key];
+		other->_components[key] = otherStrings;
 	}];
 	return other;
 }
@@ -122,35 +119,35 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 	STMutableURLQueryStringComponents *other = [[STMutableURLQueryStringComponents allocWithZone:zone] init];
 	[_components enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop __unused) {
 		NSMutableArray *otherStrings = [[NSMutableArray allocWithZone:zone] initWithArray:obj copyItems:YES];
-		[other->_components setObject:otherStrings forKey:key];
+		other->_components[key] = otherStrings;
 	}];
 	return other;
 }
 
 
 - (BOOL)containsKey:(NSString *)key {
-	return [_components objectForKey:key] != nil;
+	return _components[key] != nil;
 }
 
 - (NSArray *)allKeys {
-	return [_components allKeys];
+	return _components.allKeys;
 }
 
 - (NSArray *)stringsForKey:(NSString *)key {
-	return [_components objectForKey:key];
+	return _components[key];
 }
 
 - (NSString *)stringForKey:(NSString *)key {
-	NSArray *strings = [_components objectForKey:key];
-	return [strings count] ? [strings objectAtIndex:0] : nil;
+	NSArray *strings = _components[key];
+	return strings.count ? strings[0] : nil;
 }
 
 - (id)objectForKeyedSubscript:(NSString *)key {
-	NSArray *strings = [_components objectForKey:key];
-	if ([strings count] == 1) {
-		return [strings lastObject];
+	NSArray *strings = _components[key];
+	if (strings.count == 1) {
+		return strings.lastObject;
 	}
-	return [strings count] ? strings : nil;
+	return strings.count ? strings : nil;
 }
 
 - (NSDictionary *)dictionaryRepresentation {
@@ -158,20 +155,20 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 }
 
 - (NSDictionary *)dictionaryRepresentationWithOptions:(STURLQueryStringComponentsDictionaryRepresentationOptions)options {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[_components count]];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:_components.count];
 
     [_components enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSArray *values, BOOL *stop __unused) {
-        NSUInteger count = [values count];
+        NSUInteger count = values.count;
         switch (count) {
             case 0:
                 dictionary[key] = @"";
                 break;
             case 1:
-                dictionary[key] = [values objectAtIndex:0];
+                dictionary[key] = values[0];
                 break;
             default:
                 if (options & STURLQueryStringComponentsDictionaryRepresentationUseFirstValue) {
-                    dictionary[key] = [values objectAtIndex:0];
+                    dictionary[key] = values[0];
                 } else {
                     dictionary[key] = values;
                 }
@@ -189,11 +186,11 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 
 - (void)addString:(NSString *)string forKey:(NSString *)key {
 	if (string) {
-		NSMutableArray *stringsForKey = [_components objectForKey:key];
+		NSMutableArray *stringsForKey = _components[key];
 		if (stringsForKey) {
-			[stringsForKey addObject:[string copy]];
+			[stringsForKey addObject:string.copy];
 		} else {
-			[_components setObject:[[NSMutableArray alloc] initWithObjects:[string copy], nil] forKey:key];
+			_components[key] = [[NSMutableArray alloc] initWithObjects:string.copy, nil];
 		}
 	}
 }
@@ -205,7 +202,7 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 
 - (void)setStrings:(NSArray *)strings forKey:(NSString *)key {
 	if (strings) {
-		[_components setObject:[[NSMutableArray alloc] initWithArray:strings copyItems:YES] forKey:key];
+		_components[key] = [[NSMutableArray alloc] initWithArray:strings copyItems:YES];
 	} else {
 		[_components removeObjectForKey:key];
 	}
@@ -218,9 +215,9 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 - (void)setObject:(id)object forKeyedSubscript:(NSString *)key {
     if (!object) {
         [_components removeObjectForKey:key];
-    } else if ([object isKindOfClass:[NSString class]]) {
+    } else if ([object isKindOfClass:NSString.class]) {
         [self setString:object forKey:key];
-    } else if ([object isKindOfClass:[NSArray class]]) {
+    } else if ([object isKindOfClass:NSArray.class]) {
         [self setStrings:object forKey:key];
     } else {
         NSAssert(0, @"invalid type");

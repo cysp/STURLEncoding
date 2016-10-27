@@ -47,7 +47,7 @@
 		XCTAssertEqualObjects([a stringForKey:@"a"], @"a", @"");
 		XCTAssertEqualObjects([a stringsForKey:@"a"], (@[ @"a" ]), @"");
 
-		STURLQueryStringComponents *b = [a copy];
+		STURLQueryStringComponents *b = a.copy;
 		XCTAssertTrue([b containsKey:@"a"], @"");
 		XCTAssertEqualObjects([b stringForKey:@"a"], @"a", @"");
 		XCTAssertEqualObjects([b stringsForKey:@"a"], (@[ @"a" ]), @"");

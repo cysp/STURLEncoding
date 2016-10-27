@@ -1,20 +1,16 @@
 //
-//  STURLQueryStringEncoding.m
-//  STURLEncoding
-//
 //  This Source Code Form is subject to the terms of the Mozilla Public
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
 //  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//  Copyright (c) 2012-2014 Scott Talbot. All rights reserved.
+//  Copyright (c) 2012-2016 Scott Talbot.
 //
 
-#import "STURLQueryStringEncoding.h"
-#import "STURLEncoding.h"
+#import <STURLEncoding/STURLQueryStringEncoding.h>
+#import <STURLEncoding/STURLEncoding.h>
 
 
-@implementation STURLQueryStringEncoding {
-}
+@implementation STURLQueryStringEncoding
 
 #pragma mark - Query String Building
 
@@ -28,31 +24,31 @@
 	return [self queryStringFromComponents:components options:options keyComparator:nil];
 }
 + (NSString *)queryStringFromComponents:(STURLQueryStringComponents *)components options:(STURLQueryStringEncodingOptions)options keyComparator:(NSComparator)keyComparator {
-	NSMutableString *queryString = [NSMutableString string];
+	NSMutableString *queryString = NSMutableString.string;
 
 	if (!keyComparator) {
 		keyComparator = [^NSComparisonResult(NSString *a, NSString *b) {
 			return [a compare:b options:NSCaseInsensitiveSearch|NSNumericSearch|NSDiacriticInsensitiveSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch];
 		} copy];
 	}
-	NSArray *keys = [[components allKeys] sortedArrayUsingComparator:keyComparator];
+	NSArray *keys = [components.allKeys sortedArrayUsingComparator:keyComparator];
 	for (NSString *key in keys) {
 		NSArray *strings = [components stringsForKey:key];
-		if ([strings count] == 0) {
+		if (strings.count == 0) {
 			continue;
 		}
-		if ([strings count] == 1) {
-			if ([queryString length]) {
+		if (strings.count == 1) {
+			if (queryString.length) {
 				[queryString appendString:@"&"];
 			}
-			[queryString appendFormat:@"%@=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:[strings lastObject]]];
+			[queryString appendFormat:@"%@=%@", [STURLEncoding stringByURLEncodingString:key], [STURLEncoding stringByURLEncodingString:strings.lastObject]];
 		} else {
 			NSString *serializedKey = [STURLEncoding stringByURLEncodingString:key];
 			if ((options & STURLQueryStringEncodingOptionsBareDuplicateKeys) == 0) {
 				serializedKey = [serializedKey stringByAppendingString:@"[]"];
 			}
 			for (NSString *string in strings) {
-				if ([queryString length]) {
+				if (queryString.length) {
 					[queryString appendString:@"&"];
 				}
 				[queryString appendFormat:@"%@=%@", serializedKey, [STURLEncoding stringByURLEncodingString:string]];
@@ -78,7 +74,7 @@
 
 	STMutableURLQueryStringComponents *components = [[STMutableURLQueryStringComponents alloc] init];
 
-	while (![scanner isAtEnd]) {
+	while (!scanner.atEnd) {
 		NSString *key = nil, *value = @"";
 		if (![scanner scanUpToCharactersFromSet:separatorsOrEqualsCharacterSet intoString:&key]) {
 			if (error) {
@@ -89,12 +85,12 @@
 		if ([scanner scanCharactersFromSet:equalsCharacterSet intoString:NULL]) {
 			[scanner scanUpToCharactersFromSet:separatorsCharacterSet intoString:&value];
 		}
-		if (![scanner isAtEnd]) {
+		if (!scanner.atEnd) {
 			[scanner scanCharactersFromSet:separatorsCharacterSet intoString:NULL];
 		}
 
 		NSString *decodedKey = [STURLEncoding stringByURLDecodingString:key];
-		if ([key length] && ![decodedKey length]) {
+		if (key.length && !decodedKey.length) {
 			if (error) {
 				*error = [NSError errorWithDomain:kSTURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
 			}
@@ -102,20 +98,20 @@
 		}
 
 		NSString *decodedValue = [STURLEncoding stringByURLDecodingString:value];
-		if ([value length] && ![decodedValue length]) {
+		if (value.length && !decodedValue.length) {
 			if (error) {
 				*error = [NSError errorWithDomain:kSTURLEncodingErrorDomain code:STURLEncodingErrorCodeUnknown userInfo:nil];
 			}
 			return nil;
 		}
 		if ([decodedKey hasSuffix:@"[]"]) {
-			decodedKey = [decodedKey substringToIndex:[decodedKey length] - 2];
+			decodedKey = [decodedKey substringToIndex:decodedKey.length - 2];
 		}
 
 		[components addString:decodedValue forKey:decodedKey];
 	}
 
-	return [components copy];
+	return components.copy;
 }
 
 @end
