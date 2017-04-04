@@ -40,7 +40,8 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 
 	[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 		if (![key isKindOfClass:NSString.class]) {
-			isValid = NO, *stop = YES;
+			isValid = NO;
+			*stop = YES;
 			return;
 		}
 
@@ -54,7 +55,8 @@ static BOOL STURLQueryStringComponentsIsValidDictionary(NSDictionary *dict) {
 			}
 		}
 
-		isValid = NO, *stop = YES;
+		isValid = NO;
+		*stop = YES;
 	}];
 
 	return isValid;
